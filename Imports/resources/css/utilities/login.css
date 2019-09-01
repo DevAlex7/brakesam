@@ -1,0 +1,29 @@
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+}
+#card-login{
+    border-width:0;
+    box-shadow: none !important;
+    margin-top:5rem;
+}
+.input-field input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #DB162F !important;
+    box-shadow: 0 1px 0 0 #DB162F !important;
+}
+.input-field input[type=password]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #DB162F !important;
+    box-shadow: 0 1px 0 0 #DB162F !important;
+}
+#iconUsername, #iconPassword{
+    color: #DB162F;
+}
+#btnLogin{
+    background-color: #DB162F;
+    border-radius: 15px;
+}
+#titleLogin{
+    font-weight: bold;
+}
+#logo{
+    margin-top:2rem;
+}
