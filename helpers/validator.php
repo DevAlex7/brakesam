@@ -156,9 +156,17 @@ class Validator{
 			return false;
 		}
 	}
+	public function validateUsername($value){
+		if (strlen($value) > 7) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public function validatePassword($value)
 	{
-		if (strlen($value) > 5) {
+		if (strlen($value) > 8) {
 			return true;
 		} else {
 			return false;
@@ -170,17 +178,6 @@ class Validator{
 			} else {
 					return false;
 			}
-	}
-	public function ValidateSite($site){
-		$file ='../../../feed/account/'.$site.'.php';
-		if(file_exists($file))  
-		{ 
-				return true;
-		} 
-		else 
-		{ 
-				return false;
-		} 
 	}
 	public function validateDate($value){
 		if(preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$value)) {

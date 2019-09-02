@@ -1,4 +1,4 @@
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+::placeholder { 
     color: black;
 }
 #card-login{
@@ -17,6 +17,10 @@
     color: #DB162F;
 }
 #btnLogin{
+    background-color: #DB162F;
+    border-radius: 15px;
+}
+#close{
     background-color: #DB162F;
     border-radius: 15px;
 }

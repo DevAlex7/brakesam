@@ -22,15 +22,15 @@
                         <img src="Imports/resources/pics/logo.png"></img>
                     </div>
                     <div class="row">
-                        <form class="col s12">
+                        <form class="col s12" method="POST" id="form-login">
                             <div class="row">
                                 <div class="input-field col s6 offset-s3">
                                     <i class="material-icons prefix" id="iconUsername">account_circle</i>
-                                    <input id="icon_prefix" type="text" placeholder="Usuario">
+                                    <input id="Username" name="Username" type="text" placeholder="Usuario">
                                 </div>
                                 <div class="input-field col s6 offset-s3">
                                     <i class="material-icons prefix" id="iconPassword">vpn_key</i>
-                                    <input id="icon_prefix" type="password" placeholder="Contraseña">
+                                    <input id="key" name="key" type="password" placeholder="Contraseña">
                                 </div>
                             </div>
                             <div class="center">
@@ -42,7 +42,10 @@
             </div>
         </div>
     </div>
-<script src="Imports/global/jquery-3.2.1.min.js"></script>
-<script src="Imports/global/materialize.min.js"></script>
+
+<script src="<?php print SERVERURL; ?>Imports/resources/js/global/jquery-3.2.1.min.js"></script>
+<script src="<?php print SERVERURL; ?>Imports/resources/js/global/materialize.min.js"></script>
+<script src="<?php print SERVERURL; ?>helpers/functions.js"></script>
+<script src="<?php print SERVERURL; ?>controllers/Login.js"></script>
 </body>
 </html>
