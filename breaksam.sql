@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2019 a las 23:29:10
+-- Tiempo de generación: 02-09-2019 a las 07:14:35
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -75,6 +75,15 @@ CREATE TABLE `roles` (
   `role` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`) VALUES
+(0, 'Gerente'),
+(1, 'Presidente'),
+(2, 'Secretario');
+
 -- --------------------------------------------------------
 
 --
@@ -140,10 +149,18 @@ CREATE TABLE `users` (
   `name` varchar(150) NOT NULL,
   `lastname` varchar(150) NOT NULL,
   `email` varchar(150) NOT NULL,
+  `username` varchar(150) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `createt_at` varchar(11) NOT NULL
+  `created_at` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `lastname`, `email`, `username`, `password`, `role_id`, `created_at`) VALUES
+(1, 'Alejandro', 'Gonzalez', 'alexgve7@gmail.com', 'Alexgve7', '$2y$10$e3iJ2UJJRC8Aw1joUOWtYO4154qm73hn/lcHPq.i1bRnXu55cr7dG', 0, '2019-09-01');
 
 -- --------------------------------------------------------
 
@@ -257,7 +274,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `sales`
@@ -287,7 +304,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `warehouses`
