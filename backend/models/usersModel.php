@@ -115,7 +115,15 @@ class Users extends Validator {
 		} else {
 			return false;
 		}
-	}
+    }
+    public function openSession(){
+        $_SESSION['idUsername'] = $this->Id();
+        $_SESSION['NameUser'] = $this->Name();
+        $_SESSION['LastnameUser'] = $this->Lastname();
+        $_SESSION['EmailUser'] = $this->Email();
+        $_SESSION['Username'] = $this->Username();
+        $_SESSION['RoleUser'] = $this->Role();
+    }
     public function checkEmail(){
         $sql = 'SELECT email FROM users WHERE email = ?';
 		$params = array($this->email);

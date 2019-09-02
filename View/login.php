@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="input-field col s6 offset-s3">
                                     <i class="material-icons prefix" id="iconUsername">account_circle</i>
-                                    <input id="Username" name="Username" type="text" placeholder="Usuario">
+                                    <input id="Username" name="Username" autocomplete="off" type="text" placeholder="Usuario">
                                 </div>
                                 <div class="input-field col s6 offset-s3">
                                     <i class="material-icons prefix" id="iconPassword">vpn_key</i>

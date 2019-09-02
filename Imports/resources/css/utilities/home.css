@@ -1,0 +1,36 @@
+#navbar-template{
+    background-color: #DB162F;
+}
+#title-navbar{
+    font-weight: 100;
+    font-size: 30px;
+    margin-left: 1rem;
+}
+#title-card2{
+    margin-top: 1rem; 
+}
+#card-home{
+    margin-top: 1rem;
+    box-shadow: none !important;
+}
+#controlButtons{
+    margin-top:1.5rem;
+}
+#btnSailV{
+    background-color: #DB162F;
+    border-radius: 5px;    
+    margin-left: 1rem;
+}
+#btnAddProduct{
+    margin-top:1rem;
+    background-color: #DB162F;
+    border-radius: 5px;    
+    margin-left: 1rem;
+}
+#card-list-categories{
+    box-shadow: none !important;
+}
+#title-card3{
+    font-weight: bold;
+    color:grey;
+}

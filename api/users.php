@@ -68,6 +68,7 @@
                         if( 
                             $users->checkUsername() && $users->checkPassword()
                         ){
+                            $users->openSession();
                             $result['status']=1;
                         }
                         else{

@@ -45,6 +45,7 @@ $('#form-login').submit(function(){
                 const result = JSON.parse(response);
                 if(result.status){
                     ToastSucces('Logueado correctamente');
+                    location.href='home';
                 }
                 else{
                     ToastError(result.exception);
