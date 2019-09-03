@@ -1,5 +1,7 @@
 $(document).ready(function () {
     readListCategories();
+    $('select').formSelect();
+    selectCategories('selectCategory',null);
 });
 
 const setCategoriesList = (categories) => {
@@ -9,7 +11,16 @@ const setCategoriesList = (categories) => {
     if(categories.length > 0){
 
         contentTable =  `
-        
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="readCategories">
+            </tbody>
+        </table>
         `;
 
         $('#categoriesList').html(contentTable);
@@ -96,5 +107,66 @@ $('#createCategory').submit(function(){
         }
     )
 })
-
+const selectCategories = (Select, value) => {
+    $.ajax({
+        url: apiTo('categories','allCategories'),
+        type: 'POST',
+        data: null,
+        datatype: 'JSON'
+    })
+    .done(function(response){
+        if (isJSONString(response)) {
+            const result = JSON.parse(response);
+            if (result.status) {
+                let content = '';
+                if (!value) {
+                    content += '<option value="" disabled selected>Seleccione una categoria</option>';
+                }
+                result.dataset.forEach(function(row){
+                    if (row.id != value) {
+                        content += `<option value="${row.id}">${row.category}</option>`;
+                    } else {
+                        content += `<option value="${row.id}" selected>${row.category}</option>`;
+                    }
+                });
+                $('#' + Select).html(content);
+            } else {
+                $('#' + Select).html('<option value="">No hay tipos de eventos</option>');
+            }
+            $('select').formSelect();
+        } else {
+            console.log(response);
+        }
+    })
+    .fail(function(jqXHR){
+        console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
+    });
+}
+$('#addSubCategory').submit(function(){
+    event.preventDefault();
+    $.ajax(
+        {
+            url:apiTo('categories','createSubcategory'),
+            type:'POST',
+            data:$('#addSubCategory').serialize(),
+            datatype:'JSON'
+        }
+    )
+    .done(function(response)
+        {
+            if(isJSONString(response)){
+                const result = JSON.parse(response);
+                if(result.status){
+                    ToastSucces('Sub Categoría creada correctamente');
+                    }
+                else{
+                    ToastError(result.exception);
+                }
+            }
+            else{
+                console.log(response);
+            }
+        }
+    )
+})
 

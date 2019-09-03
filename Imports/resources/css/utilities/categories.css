@@ -35,3 +35,7 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
 #searchPart{
     margin-top:1rem;
 }
+#btnaddSub{
+    background-color: #DB162F;
+    margin-top:1rem;
+}

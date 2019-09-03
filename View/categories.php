@@ -50,16 +50,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m12">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Categoria</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody id="readCategories">
-                            </tbody>
-                        </table>
+                        <div id="categoriesList"></div>
                     </div>
                 </div>
             </div>
@@ -69,6 +60,20 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">Sub categorias</span>
+                <form method="POST" id="addSubCategory">
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <input type="text" name="subcategory_name" placeholder="Crea una subcategoria">
+                        </div>
+                        <div class="col s12 m6">
+                            <select id="selectCategory" name="selectCategory">
+                            </select>
+                        </div>
+                        <div class="center">
+                            <button class="btn" id="btnaddSub">Agregar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

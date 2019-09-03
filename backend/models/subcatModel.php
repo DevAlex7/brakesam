@@ -3,8 +3,9 @@ class Subcategories extends Validator
 {
     //Declarando propiedades
     private $id = null;
+    private $subcategory = null;
     private $idCat = null;
-    private $category = null;
+    
 
     //Métodos para sobrecargar propiedades
     public function setId($value)
@@ -22,6 +23,21 @@ class Subcategories extends Validator
         return $this->id;
     }
 
+    public function setSubCategory($value)
+    {
+        if ($this->validateAlphabetic($value, 1, 50)) {
+            $this->subcategory = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function getSubCategory()
+    {
+        return $this->subcategory;
+    }
+
     public function setIdCat($value)
     {
         if ($this->validateId($value)) {
@@ -37,27 +53,14 @@ class Subcategories extends Validator
         return $this->idCat;
     }
 
-    public function setCategory($value)
-    {
-        if ($this->validateAlphabetic($value, 1, 50)) {
-            $this->category = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
+    
 
     //Metodos para manejar el CRUD u operaciones básicas, agregar, leer, eliminar y modificar
 
     public function createsubCategory()
     {
         $sql = 'INSERT INTO subcategories_products(subcategory, category_id) VALUES (?, ?)';
-        $params = array($this->id);
+        $params = array($this->subcategory, $this->idCat);
         return Database::executeRow($sql, $params);   
     }
 

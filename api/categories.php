@@ -1,6 +1,7 @@
 <?php 
     require_once('../helpers/validator.php');
     require_once('../backend/models/categoriesModel.php');
+    require_once('../backend/models/subcatModel.php');
     require_once('../backend/database/database.php');
 
     session_start();
@@ -8,6 +9,7 @@
     
     if( isset($_GET['action']) ){
         $category = new Categories();
+        $subCategory =  new Subcategories();
         switch($_GET['action']){
             case 'allCategories':
                 if($result['dataset'] = $category->readAllCategories())
@@ -30,6 +32,29 @@
                 else{
                     $result['exception']='Nombre de la categoria invalido';
                 }
+            break;
+            case 'createSubcategory':
+            if(isset($_POST['selectCategory'])){
+                if($subCategory->setSubCategory($_POST['subcategory_name'])){
+                    if($subCategory->setIdCat($_POST['selectCategory'])){ 
+                        if($subCategory->createsubCategory()){
+                            $result['status']=1;
+                        }
+                        else{
+                            $result['exception']='Fallo al crear la subcategoria';
+                        }
+                    }
+                    else{
+                        $result['exception']='No se ha seleccionado una categoria';
+                    }
+                }
+                else{
+                    $result['exception']='El nombre de la subcategoria es invalido';
+                }
+            }   
+            else{
+                $result['exception']='No se ha seleccionado una categoria';
+            } 
             break;
             default:
             exit('Petición rechazada');
