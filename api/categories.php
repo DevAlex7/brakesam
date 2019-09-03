@@ -19,6 +19,17 @@
                 }
             break;  
             case 'createCategory':
+                if($category->setCategory($_POST['name_category'])){
+                    if($category->createCategory()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='Fallo al crear la categoría';
+                    }
+                }
+                else{
+                    $result['exception']='Nombre de la categoria invalido';
+                }
             break;
             default:
             exit('Petición rechazada');

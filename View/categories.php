@@ -50,7 +50,16 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m12">
-                        <div id="categoriesList"></div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Categoria</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="readCategories">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

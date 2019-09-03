@@ -9,22 +9,14 @@ const setCategoriesList = (categories) => {
     if(categories.length > 0){
 
         contentTable =  `
-        <table>
-                <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Acciones</th>
-                </tr>
-                </thead>
-                <tbody id="readCategories">
-                </tbody>
-            </table>
+        
         `;
 
         $('#categoriesList').html(contentTable);
         
         categories.map( categorie => {
             content +=`
+                <tr>
                 <td>
                     ${categorie.category}
                 </td>
@@ -32,6 +24,7 @@ const setCategoriesList = (categories) => {
                     <a id="editIcon"> <i class="material-icons">edit</i> </a>
                     <a id="deleteIcon"> <i class="material-icons">delete</i> </a>
                 </td>
+                </tr>
             `;
         })    
 
@@ -76,7 +69,6 @@ $('#search').submit(function(){
     
 })
 $('#createCategory').submit(function(){
-    ToastSucces('hola');
     event.preventDefault();
     $.ajax(
         {
@@ -91,7 +83,8 @@ $('#createCategory').submit(function(){
             if(isJSONString(response)){
                 const result = JSON.parse(response);
                 if(result.status){
-                    ToastSucces('hola');
+                    ToastSucces('Categoría creada correctamente');
+                    readListCategories();
                 }
                 else{
                     ToastError(result.exception);

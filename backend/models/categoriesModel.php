@@ -41,7 +41,7 @@ class Categories extends Validator
     public function createCategory()
     {
         $sql = 'INSERT INTO categories_products(category) VALUES (?)';
-        $params = array($this->id);
+        $params = array($this->category);
         return Database::executeRow($sql, $params);   
     }
 
