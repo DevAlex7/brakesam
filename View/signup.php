@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Registro</title>
-    <link rel="stylesheet" href="<?php print SERVERURL; ?>Imports/resources/css/global/materialize.min.css">
-    <link rel="stylesheet" href="<?php print SERVERURL; ?>Imports/resources/css/global/material-icons.css">
-    <link rel="stylesheet" href="<?php print SERVERURL; ?>Imports/resources/css/utilities/signup.css">
+    <link rel="stylesheet" href="Imports/resources/css/global/materialize.min.css">
+    <link rel="stylesheet" href="Imports/resources/css/global/material-icons.css">
+    <link rel="stylesheet" href="Imports/resources/css/utilities/signup.css">
 </head>
 <body>
     <div class="row">
@@ -60,9 +60,9 @@
             </div>
         </div>
     </div>
-<script src="<?php print SERVERURL; ?>Imports/resources/js/global/jquery-3.2.1.min.js"></script>
-<script src="<?php print SERVERURL; ?>Imports/resources/js/global/materialize.min.js"></script>
-<script src="<?php print SERVERURL; ?>helpers/functions.js"></script>
-<script src="<?php print SERVERURL; ?>controllers/Login.js"></script>
+<script src="Imports/resources/js/global/jquery-3.2.1.min.js"></script>
+<script src="Imports/resources/js/global/materialize.min.js"></script>
+<script src="helpers/functions.js"></script>
+<script src="controllers/Login.js"></script>
 </body>
 </html>
