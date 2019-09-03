@@ -59,14 +59,14 @@ class Categories extends Validator
         return Database::executeRow($sql, $params);   
     }
 
-    public function readCategory()
+    public function readAllCategories()
     {
         $sql = 'SELECT id, category FROM categories_products ORDER BY id';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
 
-    public function getCategoryNone()
+    public function getCategorybyId()
     {
         $sql = 'SELECT id, category FROM categories_products WHERE id = ?';
         $params = array($this->id);

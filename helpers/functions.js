@@ -23,7 +23,17 @@ function isJSONString(string)
     }
 }
 function ToastSucces(messageSucces){
-    var success = M.toast({html:messageSucces});
+    var toastContent = `
+        <div class="card" id="to>
+            <div class="card-content">
+                <span class="black-text">${messageSucces}</span>
+            </div>
+        </div>
+    `;
+    var success = M.toast({
+        html:toastContent,
+        classes:'toastsuccess'
+    });
     return success;
 }
 function ToastError(messageError){

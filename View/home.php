@@ -31,7 +31,7 @@
                         </span>
                         <span class="grey-text">Frenos y más</span>
                         <span class="card-title" id="title-card2">
-                            Opciones del día
+                            Opciones
                         </span>
                         <div class="row" id="controlButtons">
                         <a class="btn" id="btnSailV"> <i class="material-icons left">swap_vert</i> Registro / Venta</a>
