@@ -39,3 +39,9 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     background-color: #DB162F;
     margin-top:1rem;
 }
+#rowSearchSubcategory{
+    margin-top:0.5rem;
+}
+#subcategoriesDiv{
+    margin-top:1.5rem;
+}

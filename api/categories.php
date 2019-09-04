@@ -56,6 +56,14 @@
                 $result['exception']='No se ha seleccionado una categoria';
             } 
             break;
+            case 'allSubCategories':
+                if($result['dataset'] = $subCategory->readsubCategory()){
+                    $result['status']=1;
+                }
+                else{
+                    $result['exception'] ='No hay subcategorias agregadas';
+                }
+            break;
             default:
             exit('Petición rechazada');
         }

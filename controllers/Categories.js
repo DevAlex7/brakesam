@@ -1,5 +1,6 @@
 $(document).ready(function () {
     readListCategories();
+    readListSubCategories();
     $('select').formSelect();
     selectCategories('selectCategory',null);
 });
@@ -66,11 +67,85 @@ const readListCategories = () => {
                     `);
                 }
                 setCategoriesList(result.dataset);
-                
             }
-
             else{
+                console.log(response);
+            }
+        }
+    )
+}
 
+
+const setSubCategoriesList = (categories) => {
+    let content = '';
+    let contentTable = '';
+
+    if(categories.length > 0){
+
+        contentTable =  `
+        <table>
+            <thead>
+                <tr>
+                    <th>Subcategoria</th>
+                    <th>Categoria</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody id="subcategoriesRead">
+            </tbody>
+        </table>
+        `;
+
+        $('#subcategoriesDiv').html(contentTable);
+        
+        categories.map( categorie => {
+            content +=`
+                <tr>
+                <td>
+                    ${categorie.subcategory}
+                </td>
+                <td>
+                    ${categorie.category}
+                </td>
+                <td>
+                    <a id="editIcon"> <i class="material-icons">edit</i> </a>
+                    <a id="deleteIcon"> <i class="material-icons">delete</i> </a>
+                </td>
+                </tr>
+            `;
+        })    
+
+        $('#subcategoriesRead').html(content);    
+    }
+}
+const readListSubCategories = () => {
+    $.ajax(
+        {
+            url:apiTo('categories','allSubCategories'),
+            type:'GET',
+            data:null,
+            datatype:'JSON'
+        }
+    )
+    .done(function(response)
+        {
+            if(isJSONString(response)){
+                const result = JSON.parse(response);
+                if(!result.status){
+                    $('#categoriesList').html(`
+                        <div id="">
+                            <div class="center">
+                                <i class="material-icons">face</i>
+                                <p>No hay subcategorias agregadas todavia</p>
+                            </div>
+                        </div>
+                    `);
+                }
+                setSubCategoriesList(result.dataset);
+            }
+            else{
+                console.log(response);
             }
         }
     )
@@ -124,9 +199,9 @@ const selectCategories = (Select, value) => {
                 }
                 result.dataset.forEach(function(row){
                     if (row.id != value) {
-                        content += `<option value="${row.id}">${row.category}</option>`;
+                        content += `<option class="black-text" value="${row.id}">${row.category}</option>`;
                     } else {
-                        content += `<option value="${row.id}" selected>${row.category}</option>`;
+                        content += `<option class="black-text" value="${row.id}" selected>${row.category}</option>`;
                     }
                 });
                 $('#' + Select).html(content);
@@ -158,6 +233,7 @@ $('#addSubCategory').submit(function(){
                 const result = JSON.parse(response);
                 if(result.status){
                     ToastSucces('Sub Categoría creada correctamente');
+                    readListSubCategories();
                     }
                 else{
                     ToastError(result.exception);

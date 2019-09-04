@@ -24,7 +24,6 @@
                 <div class="row">
                     <div class="col s12 m12">
                         <span class="grey-text card-title">Categorias</span>
-
                         <div class="row" id="searchPart">
                             <div class="col s12 m6">
                                 <form  method="POST" id="createCategory">
@@ -74,6 +73,27 @@
                         </div>
                     </div>
                 </form>
+                <div class="row" id="searchPart">
+                    <div class="col s12 m12" id="rowSearchSubcategory">
+                        <nav class="white">
+                            <div class="nav-wrapper">
+                                <form id="search" method="POST">
+                                    <div class="input-field">
+                                        <input id="search" type="search" placeholder="Busca una subcategoria...">
+                                        <label class="label-icon" for="search"><i class="material-icons black-text">search</i></label>
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                </form>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <div class="row" id="tableSubcategories">
+                    <div class="col s12 m12">
+                        <div id="subcategoriesDiv">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -80,7 +80,7 @@ class Subcategories extends Validator
 
     public function readsubCategory()
     {
-        $sql = 'SELECT id, subcategory, category_id, category FROM subcategories_products INNER JOIN categories_products cat ON cat.category_id ORDER BY id';
+        $sql = 'SELECT subcategories_products.subcategory, categories_products.category FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) ORDER BY subcategories_products.id';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
