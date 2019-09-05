@@ -3,6 +3,7 @@ $(document).ready(function () {
     readListSubCategories();
     $('select').formSelect();
     selectCategories('selectCategory',null);
+    
 });
 
 const setCategoriesList = (categories) => {
@@ -173,6 +174,7 @@ $('#createCategory').submit(function(){
                     $('#name_category').val('');
                     $('#name_category').focus();
                     readListCategories();
+                    selectCategories('selectCategory',null);
                 }
                 else{
                     ToastError(result.exception);
