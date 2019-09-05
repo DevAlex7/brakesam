@@ -24,23 +24,23 @@
                     <span class="grey-text"> Complete datos de la empresa proveedora</span>
                     <form method="POST">
                         <div class="input-field prefix" id="inputField">
-                            <i class="material-icons prefix">apartment</i>
+                            <i class="material-icons prefix black-text">apartment</i>
                             <input type="text" name="" placeholder="Nombre" id="">   
                         </div>
                         <div class="input-field prefix" id="inputField">
-                            <i class="material-icons prefix">room</i>
+                            <i class="material-icons prefix black-text">room</i>
                             <input type="text" name="" placeholder="Dirección" id="">   
                         </div>
                         <div class="input-field prefix" id="inputField">
-                            <i class="material-icons prefix">phone</i>
+                            <i class="material-icons prefix black-text">phone</i>
                             <input type="text" name="" placeholder="Numero teléfonico" id="">   
                         </div>
                         <div class="input-field prefix" id="inputField">
-                            <i class="material-icons prefix">contact_mail</i>
+                            <i class="material-icons prefix black-text">contact_mail</i>
                             <input type="text" name="" placeholder="Numero NIT" id="">   
                         </div>
                         <div class="input-field prefix" id="inputField">
-                            <i class="material-icons prefix">contact_mail</i>
+                            <i class="material-icons prefix black-text">contact_mail</i>
                             <input type="text" name="" placeholder="Numero NRC" id="">   
                         </div>
                         <div class="center">
