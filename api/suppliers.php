@@ -23,17 +23,17 @@ if (isset($_GET['action'])) {
                         if($supplier->setNit($_POST['NIT'])) {
                             if ($supplier->setNrc($_POST['NRC'])) {
                                 if($supplier->setDate($_POST['date_created'])) {
-                            if ($supplier->createCategory()) {
-                                $result['status'] = 1;
+                                    if ($supplier->createCategory()) {
+                                         $result['status'] = 1;
+                                    } else {
+                                        $result['exception'] = 'Fallo al crear la categoría';
+                                    }
+                                } else {
+                                    $result['exception'] = 'Fecha incorrecta';
+                                }
                             } else {
-                                $result['exception'] = 'Fallo al crear la categoría';
+                                $result['exception'] = 'NRC incorrecto ';
                             }
-                        } else {
-                            $result['exception'] = 'Fecha incorrecta';
-                        }
-                        } else {
-                            $result['exception'] = 'NRC incorrecto ';
-                        }
                         } else {
                             $result['exception'] = 'Número de Identificación Tributaria incorrecto';
                         }
@@ -46,7 +46,39 @@ if (isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'Nombre de la categoria invalido';
             }
-            
+            break;
+        case 'updateSupplier':
+            if ($supplier->setEnterpriseName($_POST['enterprise_name'])) {
+                if ($supplier->setUbication($_POST['ubication'])) {
+                    if ($supplier->setPhone($_POST['cellphone'])) {
+                        if ($supplier->setNit($_POST['NIT'])) {
+                            if ($supplier->setNrc($_POST['NRC'])) {
+                                if ($supplier->setDate($_POST['date_created'])) {
+                                    if($supplier->updateSupplier()) {
+                                        $result['status'] = 1;
+                                    } else {
+                                        $result['exception'] = 'Fallo al actualizar información';
+                                    }
+
+                                } else {
+                                    $result['exception'] = 'No se puede actualizar la fecha de creación'
+                                }
+                            } else {
+                                $result['exception'] = 'No se puede actualizar el NRC';
+                            }
+                        } else {
+                            $result['exception'] = 'No se puede actualizar el NIT';
+                        }
+                    } else {
+                        $result['exception'] = 'No se puede actualizar el teléfono';
+                    }
+                } else {
+                    $result ['exception'] = 'No se puede actualizar la ubicación';
+                }
+            } else {
+                $result['exception'] = 'No se puede actualizar el nombre del proveedor';
+            }
+        break;
         default:
             exit('Petición rechazada');
     }
