@@ -110,7 +110,7 @@ class Validator{
 		} else {
 			return false;
 		}
-	  }
+	}
 	  
 	public function deleteFile($path, $name)
     {
@@ -195,6 +195,19 @@ class Validator{
 			else {
 				return false;
 			}
+	}
+	public function validateCellphone($cellphone){
+		if( strlen($cellphone) <= 8 ){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	public function setCellphone ($cellphone) {
+		$complete = str_split($cellphone,4);
+		$completeCellphone = $complete[0].'-'.$complete[1];
+		return $completeCellphone;
 	}
 }
 

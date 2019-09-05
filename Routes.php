@@ -26,13 +26,20 @@
   });
   Route::set('categories', function(){
       if($_SESSION['idUsername']){
-      
         include 'View/categories.php';
       }
       else{
         header('Location: login');
       }
   });
+  
   Route::set('suppliers', function(){
+    include 'View/suppliers.php';
   });
+
+  Route::set('subcategoriesview', function(){
+    include 'View/view_subcategories.php';
+  });
+
+  
 ?>

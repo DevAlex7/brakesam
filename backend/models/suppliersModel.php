@@ -58,8 +58,8 @@ class Suppliers extends Validator
 
     public function setPhone($value)
     {
-        if ($this->validateAlphanumeric($value, 1, 100)) {
-            $this->cellphone= $value;
+        if ($this->validateCellphone($value)){
+            $this->cellphone = $this->setCellphone($value); 
             return true;
         } else {
             return false;
@@ -125,28 +125,28 @@ class Suppliers extends Validator
         return Database::executeRow($sql, $params);   
     }
 
-    public function updateSale()
+    public function updateSupplier()
     {
         $sql = 'UPDATE suppliers SET enterprice_name = ?, ubication = ?, cellphone = ?, NIT = ?, NRC = ?, date_created = ? WHERE id = ?';
         $params = array($this->enterpriseName, $this->ubication, $this->cellphone, $this->nit, $this->nrc, $this->date);
         return Database::executeRow($sql, $params);   
     }
 
-    public function deleteSale()
+    public function deleteSupplier()
     {
         $sql = 'DELETE FROM suplliers WHERE id = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);   
     }
 
-    public function readSale()
+    public function readSuppliers()
     {
-        $sql = 'SELECT id, enterprise_name, ubication, cellphone, NIT, NRC, date_created) FROM suppliers ORDER BY id';
+        $sql = 'SELECT * FROM suppliers ORDER BY id';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
 
-    public function getSale()
+    public function getSupplierbyId()
     {
         $sql = 'SELECT id, enterprise_name, ubication, cellphone, NIT, NRC, date_created) FROM suppliers WHERE id = ?';
         $params = array($this->id);

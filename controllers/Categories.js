@@ -83,18 +83,18 @@ const setSubCategoriesList = (categories) => {
     if(categories.length > 0){
 
         contentTable =  `
-        <table>
-            <thead>
-                <tr>
-                    <th>Subcategoria</th>
-                    <th>Categoria</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Subcategoria</th>
+                        <th>Categoria</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
 
-            <tbody id="subcategoriesRead">
-            </tbody>
-        </table>
+                <tbody id="subcategoriesRead">
+                </tbody>
+            </table>
         `;
 
         $('#subcategoriesDiv').html(contentTable);
@@ -133,7 +133,7 @@ const readListSubCategories = () => {
             if(isJSONString(response)){
                 const result = JSON.parse(response);
                 if(!result.status){
-                    $('#categoriesList').html(`
+                    $('#subcategoriesDiv').html(`
                         <div id="">
                             <div class="center">
                                 <i class="material-icons">face</i>
@@ -170,6 +170,8 @@ $('#createCategory').submit(function(){
                 const result = JSON.parse(response);
                 if(result.status){
                     ToastSucces('Categoría creada correctamente');
+                    $('#name_category').val('');
+                    $('#name_category').focus();
                     readListCategories();
                 }
                 else{

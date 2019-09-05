@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Categorias</title>
-    <link rel="stylesheet" href="Imports/resources/css/global/materialize.min.css">
-    <link rel="stylesheet" href="Imports/resources/css/global/material-icons.css">
-    <link rel="stylesheet" href="Imports/resources/css/utilities/categories.css">
+    <?php 
+        Component::styles('categories');
+    ?>
 </head>
 <body>
 <?php 
@@ -27,7 +27,7 @@
                         <div class="row" id="searchPart">
                             <div class="col s12 m6">
                                 <form  method="POST" id="createCategory">
-                                    <input type="text" name="name_category" placeholder="Ingresa una categoria">
+                                    <input type="text" id="name_category" name="name_category" placeholder="Ingresa una categoria">
                                     <button class="btn" id="buttonAddCategorie">Agregar</button>
                                 </form>
                             </div>
@@ -98,9 +98,8 @@
         </div>
     </div>
 </div>
-<script src="Imports/resources/js/global/jquery-3.2.1.min.js"></script>
-<script src="Imports/resources/js/global/materialize.min.js"></script>
-<script src="helpers/functions.js"></script>
-<script src="controllers/Categories.js"></script>
+<?php 
+Component::scripts('Categories');
+?>
 </body>
 </html>

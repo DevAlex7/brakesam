@@ -1,7 +1,6 @@
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color:black;
 }
-
 input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     border-bottom: 1px solid #DB162F !important;
     box-shadow: 0 1px 0 0 #DB162F !important;
@@ -10,7 +9,6 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     box-shadow: none !important;
 }
 .toastsuccess{
-    
 	background-color:white;
 	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.28), 0 1px 10px 0 rgba(0, 0, 0, 0.24), 0 2px 4px -1px rgba(0, 0, 0, 0.6);
 }
@@ -25,6 +23,7 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
 #buttonAddCategorie{
     background-color: #DB162F;
     margin-top:0.5rem;
+    border-radius: 15px;
 }
 #rowSearch{
     margin-top:2rem;
@@ -38,9 +37,11 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
 #btnaddSub{
     background-color: #DB162F;
     margin-top:1rem;
+    border-radius: 15px;
 }
 #rowSearchSubcategory{
     margin-top:0.5rem;
+    
 }
 #subcategoriesDiv{
     margin-top:1.5rem;

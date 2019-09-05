@@ -64,6 +64,14 @@
                     $result['exception'] ='No hay subcategorias agregadas';
                 }
             break;
+            case 'categoriesWithSubcategories':
+                if($result['dataset'] = $category->getCategoriesWithSubCategories()){
+                    $result['status']=1;
+                }
+                else{
+                    $result['exception']='No se ha encontrado información';
+                }
+            break;
             default:
             exit('Petición rechazada');
         }

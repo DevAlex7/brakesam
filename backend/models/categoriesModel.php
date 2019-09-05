@@ -51,6 +51,7 @@ class Categories extends Validator
         $params = array($this->category);
         return Database::executeRow($sql, $params);   
     }
+     
 
     public function deleteCategory()
     {
@@ -71,5 +72,12 @@ class Categories extends Validator
         $sql = 'SELECT id, category FROM categories_products WHERE id = ?';
         $params = array($this->id);
         return Database::getRows($sql, $params);
+    }
+
+    public function getCategoriesWithSubCategories(){
+        $sql = 'SELECT categories_products.id AS id_category, categories_products.category, COUNT(subcategories_products.id) FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) GROUP BY categories_products.category';
+        $params = array(null);
+        return Database::getRows($sql,$params);
+
     }
 }

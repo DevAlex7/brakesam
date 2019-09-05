@@ -29,8 +29,25 @@
 }
 #card-list-categories{
     box-shadow: none !important;
+    width: auto;
+}
+.collection .collection-item:hover{ 
+    background-color: #DB162F;
+    color:white;
+}
+.collection{
+    border-radius: 10vh;
 }
 #title-card3{
     font-weight: bold;
     color:grey;
+}
+#title-category{
+    font-weight: bold;
+    color:white;
+    
+}   
+#card-category{
+    border-radius: 10px;
+    background-color: #DB162F;
 }

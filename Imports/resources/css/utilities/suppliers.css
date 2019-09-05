@@ -1,0 +1,21 @@
+::placeholder{
+    color:black;
+}
+input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #DB162F !important;
+    box-shadow: 0 1px 0 0 #DB162F !important;
+}
+#inputField{
+    margin-top:2rem;
+}
+#btnAddSupplier{
+    background-color: #DB162F;
+    border-radius: 15px;
+}
+#spantitleError{
+    font-weight: bold;
+    font-size: 20px;
+}
+#iconSad{
+    font-size: 40px;
+}
