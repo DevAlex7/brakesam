@@ -1,6 +1,5 @@
 $(document).ready(function () {
     readSuppliers();
-    regex();
 });
 const setSuppliers = (suppliers) => {
     let content = '';

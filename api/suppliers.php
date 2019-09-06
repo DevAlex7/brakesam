@@ -61,7 +61,7 @@ if (isset($_GET['action'])) {
                                     }
 
                                 } else {
-                                    $result['exception'] = 'No se puede actualizar la fecha de creación'
+                                    $result['exception'] = 'No se puede actualizar la fecha de creación';
                                 }
                             } else {
                                 $result['exception'] = 'No se puede actualizar el NRC';
