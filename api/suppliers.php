@@ -15,21 +15,17 @@ if (isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'No hay proveedores disponibles';
             }
-            break;
+        break;
         case 'createSupplier':
-            if ($supplier->setEnterpriseName($_POST['enterprise_name'])) {
-                if ($supplier->setUbication($_POST['ubication'])) {
-                    if ($supplier->setPhone($_POST['cellphone'])) {
-                        if($supplier->setNit($_POST['NIT'])) {
-                            if ($supplier->setNrc($_POST['NRC'])) {
-                                if($supplier->setDate($_POST['date_created'])) {
-                                    if ($supplier->createCategory()) {
-                                         $result['status'] = 1;
-                                    } else {
-                                        $result['exception'] = 'Fallo al crear la categoría';
-                                    }
+            if ($supplier->setEnterpriseName($_POST['name_supplier'])) {
+                if ($supplier->setUbication($_POST['address_supplier'])) {
+                    if ($supplier->setPhone($_POST['phone_supplier'])) {
+                        if($supplier->setNit($_POST['nit_supplier'])) {
+                            if ($supplier->setNrc($_POST['nrc_supplier'])) {
+                                if ($supplier->createSupplier()) {
+                                        $result['status'] = 1;
                                 } else {
-                                    $result['exception'] = 'Fecha incorrecta';
+                                    $result['exception'] = 'Fallo al crear la categoría';
                                 }
                             } else {
                                 $result['exception'] = 'NRC incorrecto ';
@@ -46,7 +42,7 @@ if (isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'Nombre de la categoria invalido';
             }
-            break;
+        break;
         case 'updateSupplier':
             if ($supplier->setEnterpriseName($_POST['enterprise_name'])) {
                 if ($supplier->setUbication($_POST['ubication'])) {

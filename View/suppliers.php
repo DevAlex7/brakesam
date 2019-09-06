@@ -22,7 +22,7 @@
                 <div class="card-content">
                     <span class="card-title"> <i class="material-icons left">group</i> Empresa</span>
                     <span class="grey-text"> Complete datos de la empresa proveedora</span>
-                    <form method="POST" id="createSupplier"
+                    <form method="POST" id="createSupplier">
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">apartment</i>
                             <input type="text" name="name_supplier" placeholder="Nombre" id="name_supplier">   

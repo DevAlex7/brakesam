@@ -120,8 +120,8 @@ class Suppliers extends Validator
 
     public function createSupplier()
     {
-        $sql = 'INSERT INTO suppliers(enterprise_name, ubication, cellphone, NIT, NRC, date_created) VALUES (?, ?, ?, ?, ?)';
-        $params = array($this->id);
+        $sql = 'INSERT INTO suppliers(enterprise_name, ubication, cellphone, NIT, NRC, date_created) VALUES (?, ?, ?, ?, ?, ?)';
+        $params = array($this->enterpriseName, $this->ubication, $this->cellphone, $this->nit, $this->nrc, date('Y-m-d') );
         return Database::executeRow($sql, $params);   
     }
 
