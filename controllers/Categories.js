@@ -86,9 +86,7 @@ $(document).ready(function() {
                   </tbody>
               </table>
           `;
-  
-      $("#subcategoriesDiv").html(contentTable);
-  
+      
       categories.map(categorie => {
         content += `
                   <tr>
@@ -105,7 +103,7 @@ $(document).ready(function() {
                   </tr>
               `;
       });
-  
+      $("#subcategoriesDiv").html(contentTable);
       $("#subcategoriesRead").html(content);
     }
   };

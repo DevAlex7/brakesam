@@ -8,7 +8,7 @@ const setlistSubcategories = (subcategories) => {
     let contentDiv = '';
     if(subcategories.length > 0){
         contentDiv=`
-        <table>
+        <table class="animated fadeIn">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -24,6 +24,9 @@ const setlistSubcategories = (subcategories) => {
                 <tr>
                     <td>
                     ${subcategorie.subcategory}  
+                    </td>
+                    <td>
+                    ${subcategorie.number_products}
                     </td>
                 </tr>
             `;

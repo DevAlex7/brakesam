@@ -7,7 +7,7 @@ const setCategories = (categories) => {
         $('#title-card3').text('Categorías');
         categories.map( categorie => {
             content+= `
-            <div class="col s12 m12">
+            <div class="col s12 m12 animated fadeIn">
                 <ul class="collection">
                     <li class="collection-item" onClick="viewCategory( ${categorie.id_category} , '${categorie.category}' )"> ${categorie.category} </li>
                 </ul>
@@ -38,13 +38,12 @@ const readCategories = () => {
 
             }
             else{
-
             }
         }
     )
 }
 const viewCategory = (id , name) => {
-localStorage.setItem('item_category',name);
-localStorage.setItem('id_category',id);
-location.href='subcategories';
+    localStorage.setItem('item_category',name);
+    localStorage.setItem('id_category',id);
+    location.href='subcategories';
 }

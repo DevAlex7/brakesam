@@ -93,7 +93,15 @@ class Subcategories extends Validator
     }
 
     public function getSubcategoriesbyCategories(){
-        $sql = 'SELECT subcategories_products.subcategory FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) WHERE categories_products.id=?';
+        $sql = '
+        SELECT subcategories_products.subcategory, COUNT(products.id) AS number_products
+        FROM subcategories_products 
+        LEFT OUTER JOIN products ON 
+        subcategories_products.id = products.subcategory_id 
+        LEFT JOIN categories_products ON 
+        categories_products.id = subcategories_products.category_id 
+        WHERE categories_products.id = ? GROUP BY subcategories_products.subcategory
+        ';
         $params = array($this->idCat);
         return Database::getRows($sql,$params);
     }
