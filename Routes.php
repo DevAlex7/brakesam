@@ -32,14 +32,15 @@
         header('Location: login');
       }
   });
-  
   Route::set('suppliers', function(){
     include 'View/suppliers.php';
   });
-
   Route::set('subcategories', function(){
     include 'View/view_subcategories.php';
   });
+  Route::set('warehouses', function(){
+    include 'View/warehouses.php';
+  })
 
   
 ?>
