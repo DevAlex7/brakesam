@@ -22,26 +22,26 @@
                 <div class="card-content">
                     <span class="card-title"> <i class="material-icons left">group</i> Empresa</span>
                     <span class="grey-text"> Complete datos de la empresa proveedora</span>
-                    <form method="POST">
+                    <form method="POST" id="createSupplier">
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">apartment</i>
-                            <input type="text" name="" placeholder="Nombre" id="">   
+                            <input type="text" name="name_supplier" placeholder="Nombre" id="name_supplier">   
                         </div>
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">room</i>
-                            <input type="text" name="" placeholder="Dirección" id="">   
+                            <input type="text" name="address_supplier" placeholder="Dirección" id="address_supplier">   
                         </div>
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">phone</i>
-                            <input type="text" name="" placeholder="Numero teléfonico" id="">   
+                            <input type="text" name="phone_supplier" placeholder="Numero teléfonico" id="phone_supplier">   
                         </div>
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">contact_mail</i>
-                            <input type="text" name="" placeholder="Numero NIT" id="">   
+                            <input type="text" name="nit_supplier" placeholder="Numero NIT" id="nit_supplier">   
                         </div>
                         <div class="input-field prefix" id="inputField">
                             <i class="material-icons prefix black-text">contact_mail</i>
-                            <input type="text" name="" placeholder="Numero NRC" id="">   
+                            <input type="text" name="nrc_supplier" placeholder="Numero NRC" id="nrc_supplier">   
                         </div>
                         <div class="center">
                             <button type="submit" class="btn" id="btnAddSupplier">Agregar</button>
