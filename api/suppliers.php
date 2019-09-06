@@ -79,6 +79,8 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No se puede actualizar el nombre del proveedor';
             }
         break;
+        case 'deleteSupplier':
+        break;
         default:
             exit('Petición rechazada');
     }
