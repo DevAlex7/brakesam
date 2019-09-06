@@ -102,3 +102,95 @@ $("#createSupplier").submit(function() {
     });
   });
 
+
+/**
+ * Función que envia la informacion de contacto para modificar registro
+ */
+$('#formModificarContacto').submit(async () => {
+    event.preventDefault();
+    const response = await $.ajax({
+        url: apiContactanos + 'updateContactenos',
+        type: 'post',
+        data: new FormData($('#formModificarContacto')[0]),
+        datatype: 'json',
+        cache: false,
+        contentType: false,
+        processData: false
+    }).fail(function (jqXHR) {
+        //Se muestran en consola los posibles errores de la solicitud AJAX
+        console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
+    });
+    if (isJSONString(response)) {
+        const result = JSON.parse(response)
+        if (result.status) {
+            
+            $('#modalModificar').modal('toggle')
+        } else {
+        }
+        readContactenos()
+    } else {
+    }
+})
+
+/**
+ * Función que elimina un contacto
+ * @param {number} idContactenos - Codigo de identificacion del contacto
+ */
+const borrarContacto = async (idContactenos) => {
+    validarSesion()
+    swal({
+        title: 'Advertencia',
+        text: '¿Quiere eliminar el contacto?',
+        icon: 'warning',
+        buttons: {
+            cancel: {
+                text: "Cancelar",
+                value: false,
+                visible: true,
+                closeModal: true,
+              },
+              confirm: {
+                text: "Borrar",
+                value: true,
+                visible: true,
+                className: "",
+                closeModal: true
+              }
+        }
+    }).then(
+        async (isConfirm) => {
+            if (isConfirm) {
+                const response = await $.ajax({
+                    url: apiContactanos + 'deleteContactenos',
+                    type: 'post',
+                    data: { idContactenos },
+                    datatype: 'json'
+                })
+                //Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
+                if (isJSONString(response)) {
+                    const result = JSON.parse(response);
+                    //Se comprueba si el resultado es satisfactorio, sino se muestra la excepción
+                    if (result.status) {
+                        swal(
+                            'Operación Correcta',
+                            result.message,
+                            'success'
+                        )
+                    } else {
+                        swal(
+                            'Error',
+                            result.exception,
+                            'error'
+                        )
+                    }
+                    readContactenos()
+                } else {
+                    swal(
+                        'Error',
+                        response,
+                        'error'
+                    )
+                }
+            }
+        });
+}
