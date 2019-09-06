@@ -1,26 +1,11 @@
 $(document).ready(function () {
     readSuppliers();
-    regex();
 });
 const setSuppliers = (suppliers) => {
     let content = '';
-    let contentDiv = '';
     
     if(suppliers.length > 0){
-        content = `
-        <table>
-        <thead>
-            <tr>
-                <th>Proveedores</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody id="readSuppliers">
-        </tbody>
-    </table>
-    `;
-        
-        
+
     }
     else{
         content=`

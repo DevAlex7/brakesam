@@ -6,12 +6,7 @@ $(document).ready(function() {
   });
   
   const setCategoriesList = categories => {
-   let content = "";
-   let contentTable = "";
-  
-    if (categories.length > 0) {
-      contentTable = `
-          <table>
+   let content = "";   <table>
               <thead>
                   <tr>
                       <th>Categoria</th>
@@ -22,6 +17,11 @@ $(document).ready(function() {
               </tbody>
           </table>
           `;
+   let contentTable = "";
+  
+    if (categories.length > 0) {
+      contentTable = `
+       
   
       $("#categoriesList").html(contentTable);
   
