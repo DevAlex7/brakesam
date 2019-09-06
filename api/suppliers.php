@@ -61,8 +61,9 @@ if (isset($_GET['action'])) {
                                     }
 
                                 } else {
-                                    $result['exception'] = 'No se puede actualizar la fecha de creación'
+                                    $result['exception'] = 'No se puede actualizar la fecha de creación';
                                 }
+                            
                             } else {
                                 $result['exception'] = 'No se puede actualizar el NRC';
                             }
@@ -79,7 +80,13 @@ if (isset($_GET['action'])) {
                 $result['exception'] = 'No se puede actualizar el nombre del proveedor';
             }
         break;
-        case 'deleteSupplier':
+        case 'readSupplier':
+        if($result['dataset'] = $supplier->readSuppliers()){
+            $result['status']=1;
+        }
+        else{
+            $result['exception'] ='No hay proveedores agregadas';
+        }
         break;
         default:
             exit('Petición rechazada');

@@ -4,9 +4,23 @@ $(document).ready(function () {
 });
 const setSuppliers = (suppliers) => {
     let content = '';
+    let contentDiv = '';
     
     if(suppliers.length > 0){
-
+        content = `
+        <table>
+        <thead>
+            <tr>
+                <th>Proveedores</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="readSuppliers">
+        </tbody>
+    </table>
+    `;
+        
+        
     }
     else{
         content=`
@@ -41,3 +55,31 @@ const readSuppliers = () => {
         }
     )
 }
+
+$("#createSupplier").submit(function() {
+    event.preventDefault();
+    $.ajax({
+      url: apiTo("supplier", "createSupplier"),
+      type: "POST",
+      data: $("#createSupplier").serialize(),
+      datatype: "JSON"
+    }).done(function(response) {
+      if (isJSONString(response)) {
+        const result = JSON.parse(response);
+        if (result.status) {
+          ToastSucces("Proveedor creada correctamente");
+          $("#name_supplier").val("");
+          $("#address_category").val("");
+          $("#phone_category").val("");
+          $("#nit_category").val("");
+          $("#nrc_category").val("");
+          readSuppliers();
+        } else {
+          ToastError(result.exception);
+        }
+      } else {
+        console.log(response);
+      }
+    });
+  });
+
