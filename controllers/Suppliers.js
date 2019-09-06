@@ -15,7 +15,7 @@ const setSuppliers = (suppliers) => {
                     <th> <i class="material-icons left">phone</i> Telefono</th>
                     <th> <i class="material-icons left">contact_mail</i> NIT</th>
                     <th> <i class="material-icons left">contact_mail</i> NRC</th>
-                    <th> <i class="material-icons left">priority_high</i>Acciones</th>
+                    <th> <i class="material-icons left">build</i>Acciones</th>
                 </tr>
             </thead>
 
@@ -33,7 +33,7 @@ const setSuppliers = (suppliers) => {
             <td>${supplier.cellphone}</td>
             <td>${supplier.NIT}</td>
             <td>${supplier.NRC}</td>
-            <td><a href="#"> <i class="material-icons left">delete</i></a> <a href="#"> <i class="material-icons left">filter_none</i></a></td>
+            <td><a href="#"> <i class="material-icons left">edit</i></a> <a href="#"> <i class="material-icons left">delete</i></a></td>
           </tr>
           `;
         })
@@ -55,7 +55,7 @@ const readSuppliers = () => {
     $.ajax( 
         {
             url:apiTo('suppliers','getallSuppliers'),
-            type:'GET',
+                 type:'GET',
             data:null,
             datatype:'JSON'
         }   
