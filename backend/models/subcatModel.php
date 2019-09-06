@@ -91,4 +91,10 @@ class Subcategories extends Validator
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
+
+    public function getSubcategoriesbyCategories(){
+        $sql = 'SELECT subcategories_products.subcategory FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) WHERE categories_products.id=?';
+        $params = array($this->idCat);
+        return Database::getRows($sql,$params);
+    }
 }

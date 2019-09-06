@@ -9,7 +9,7 @@ const setCategories = (categories) => {
             content+= `
             <div class="col s12 m12">
                 <ul class="collection">
-                    <li class="collection-item" onClick="viewCategory(${categorie.id_category})">${categorie.category}</li>
+                    <li class="collection-item" onClick="viewCategory( ${categorie.id_category} , '${categorie.category}' )"> ${categorie.category} </li>
                 </ul>
             </div>
             `;
@@ -43,7 +43,8 @@ const readCategories = () => {
         }
     )
 }
-const viewCategory = (id) => {
+const viewCategory = (id , name) => {
+localStorage.setItem('item_category',name);
 localStorage.setItem('id_category',id);
-location.href='subcategoriesview';
+location.href='subcategories';
 }

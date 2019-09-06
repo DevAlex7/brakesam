@@ -21,7 +21,14 @@
             <div class="card" id="card-content-subcategories">
                 <div class="card-content">
                     <div class="center card-title">
-                        <span class="grey-text" id="titleSubcategory">Subcategorías</span>
+                        <p id="titleSubcategory">Categoría seleccionada:</p>
+                        <p id="categoryselected"></p>
+                        <div id="information">
+                            <span class="grey-text" id="titleSubcategory">Subcategorías</span>    
+                            <div id="readSubcategories">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

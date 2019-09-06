@@ -37,7 +37,7 @@
     include 'View/suppliers.php';
   });
 
-  Route::set('subcategoriesview', function(){
+  Route::set('subcategories', function(){
     include 'View/view_subcategories.php';
   });
 
