@@ -72,6 +72,19 @@
                     $result['exception']='No se ha encontrado información';
                 }
             break;
+            case 'getSubcategoriesbyCategories':
+                if($subCategory->setIdCat($_POST['id'])){
+                    if($result['dataset'] = $subCategory->getSubcategoriesbyCategories()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='No hay subcategorías';
+                    }
+                }
+                else{
+                    $result['exception']='No se ha definido la categoría';
+                }
+            break;
             default:
             exit('Petición rechazada');
         }

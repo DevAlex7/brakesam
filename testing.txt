@@ -1,0 +1,15 @@
+//tabla
+<table class="responsive-table">
+                        <thead>
+                            <tr>
+                                <th> <i class="material-icons left">apartment</i> Empresa</th>
+                                <th> <i class="material-icons left">room</i> Dirección </th>
+                                <th> <i class="material-icons left">phone</i> Telefono</th>
+                                <th> <i class="material-icons left">contact_mail</i> NIT</th>
+                                <th> <i class="material-icons left">contact_mail</i> NRC</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="subcategoriesRead">
+                        </tbody>
+                    </table>

@@ -1,6 +1,26 @@
+a{
+    color:black;
+}
 #titleSubcategory{
     font-weight: bold;
 }
 #card-content-subcategories{
     box-shadow: none !important;
+}
+.collection{
+    margin-top:1rem;
+    border-radius: 1vh;
+    border:none;
+}
+#item-collection:hover{
+    color:#DB162F;
+}
+#categoryselected{
+    font-weight: bold;
+}
+#information{
+    margin-top:1rem;        
+}
+th{
+    font-size: 20px;
 }
