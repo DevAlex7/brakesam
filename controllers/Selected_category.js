@@ -8,7 +8,7 @@ const setlistSubcategories = (subcategories) => {
     let contentDiv = '';
     if(subcategories.length > 0){
         contentDiv=`
-        <table class="animated fadeIn">
+        <table id="tableSubcategories" class="animated fadeIn">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -73,3 +73,6 @@ const getCategory = () => {
         }
     })
 } 
+$('body').on('click','td', function() {
+    alert('clicked');
+});

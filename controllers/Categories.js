@@ -6,25 +6,23 @@ $(document).ready(function() {
   });
   
   const setCategoriesList = categories => {
-   let content = "";   <table>
-              <thead>
-                  <tr>
-                      <th>Categoria</th>
-                      <th>Acciones</th>
-                  </tr>
-              </thead>
-              <tbody id="readCategories">
-              </tbody>
-          </table>
+   let content = '';
+   let contentTable = '';
+  
+    if (categories.length > 0) {          
+          contentTable = `
+          <table>
+          <thead>
+              <tr>
+                  <th>Categoria</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody id="readCategories">
+          </tbody>
+        </table>
           `;
-   let contentTable = "";
-  
-    if (categories.length > 0) {
-      contentTable = `
-       
-  
       $("#categoriesList").html(contentTable);
-  
       categories.map(categorie => {
         content += `
                   <tr>
