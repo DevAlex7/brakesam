@@ -4,6 +4,7 @@ class Warehouses extends Validator
     //Declarando propiedades
     private $id = null;
     private $warehouse = null;
+    private $ubication = null;
 
     //Métodos para sobrecargar propiedades
     public function setId($value)
@@ -30,6 +31,15 @@ class Warehouses extends Validator
             return false;
         }
     }
+    public function setUbicationHouse($value)
+    {
+        if ($this->validateAlphabetic($value, 1, 100)) {
+            $this->ubication = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function getHouse()
     {
@@ -40,8 +50,8 @@ class Warehouses extends Validator
 
     public function createWarehouse()
     {
-        $sql = 'INSERT INTO warehouses(warehouse) VALUES (?)';
-        $params = array($this->id);
+        $sql = 'INSERT INTO warehouses(warehouse, ubication) VALUES (?,?)';
+        $params = array($this->warehouse , $this->ubication);
         return Database::executeRow($sql, $params);   
     }
 
@@ -61,7 +71,7 @@ class Warehouses extends Validator
 
     public function readWarehouse()
     {
-        $sql = 'SELECT id, warehouse FROM warehouses ORDER BY id';
+        $sql = 'SELECT * FROM warehouses ORDER BY id';
         $params = array(null);
         return Database::getRows($sql, $params);
     }

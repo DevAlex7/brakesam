@@ -17,9 +17,43 @@
         Component::navbar();
     ?>
     <div class="row">
-        <div class="col s12 m12">
+        <div class="col s12 m4">
             <div class="card">
-                <div class="card-content"></div>
+                <div class="card-content">
+                    <span class="card-title">Sucursal</span>
+                    <span class="grey-text">Ingrese los datos de la sucursal</span>
+                    <form method="post" id="createWarehouse">
+                        <div class="input-field prefix">
+                            <i class="material-icons prefix black-text">store</i>
+                            <input 
+                                type="text" 
+                                name="name_warehouse" 
+                                id="name_warehouse"
+                                placeholder="Sucursusal"
+                            >
+                        </div>
+                        <div class="input-field prefix">
+                            <i class="material-icons prefix black-text">room</i>
+                            <input 
+                                type="text" 
+                                name="ubication_warehouse" 
+                                id="ubication_warehouse"
+                                placeholder="Ubicación de la sucursal"
+                            >
+                        </div>
+                        <div class="center">
+                            <button type="submit" class="btn" id="btnAddWarehouse">Agregar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m8">
+            <div class="card">
+                <div class="card-content">
+                    <div id="warehousesRead">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
