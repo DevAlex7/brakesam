@@ -134,7 +134,7 @@ class Suppliers extends Validator
 
     public function deleteSupplier()
     {
-        $sql = 'DELETE FROM suplliers WHERE id = ?';
+        $sql = 'DELETE FROM suppliers WHERE id = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);   
     }
@@ -148,8 +148,8 @@ class Suppliers extends Validator
 
     public function getSupplierbyId()
     {
-        $sql = 'SELECT id, enterprise_name, ubication, cellphone, NIT, NRC, date_created) FROM suppliers WHERE id = ?';
+        $sql = 'SELECT id, enterprise_name, ubication, cellphone, NIT, NRC, date_created FROM suppliers WHERE id = ?';
         $params = array($this->id);
-        return Database::getRows($sql, $params);
+        return Database::getRow($sql, $params);
     }
 }

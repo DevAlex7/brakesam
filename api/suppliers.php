@@ -44,11 +44,12 @@ if (isset($_GET['action'])) {
             }
         break;
         case 'updateSupplier':
-            if ($supplier->setEnterpriseName($_POST['name_supplier'])) {
-                if ($supplier->setUbication($_POST['address_supplier'])) {
-                    if ($supplier->setPhone($_POST['phone_supplier'])) {
-                        if ($supplier->setNit($_POST['nit_supplier'])) {
-                            if ($supplier->setNrc($_POST['nrc_supplier'])) {
+            if($supplier->setId($_POST['id_supplier'])) {
+            if ($supplier->setEnterpriseName($_POST['edit_supplier'])) {
+                if ($supplier->setUbication($_POST['edit_ubicationSu'])) {
+                    if ($supplier->setPhone($_POST['edit_phoneSu'])) {
+                        if ($supplier->setNit($_POST['edit_nitSu'])) {
+                            if ($supplier->setNrc($_POST['edit_nrcSu'])) {
                                     if($supplier->updateSupplier()) {
                                         $result['status'] = 1;
                                     } else {
@@ -70,6 +71,10 @@ if (isset($_GET['action'])) {
             } else {
                 $result['exception'] = 'No se puede actualizar el nombre del proveedor';
             }
+        } else {
+            $result['exception'] = 'id desconocido';
+        }
+
         break;
         case 'readSupplier':
         if($result['dataset'] = $supplier->readSuppliers()){
@@ -90,6 +95,19 @@ if (isset($_GET['action'])) {
         } else {
             $result['exception'] = 'Id desconocido';
         }
+        break;
+        case 'supplierbyId':
+            if($supplier->setId($_POST['id'])){
+                if($result['dataset'] = $supplier->getSupplierbyId()){
+                    $result['status']=1;
+                }
+                else{
+                    $result['exception']='Proveedor no encontrado';
+                }
+            }
+            else{
+                $result['exception']='No se ha encontrado información del proveedor';
+            }
         break;
         default:
             exit('Petición rechazada');

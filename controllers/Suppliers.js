@@ -4,9 +4,9 @@ $(document).ready(function () {
 const setSuppliers = (suppliers) => {
     let content = '';
     let contentTable = '';
-    if(suppliers.length > 0){
-     
-        content=`
+    if (suppliers.length > 0) {
+
+        content = `
         <table class="responsive-table">
             <thead>
                 <tr>
@@ -25,23 +25,29 @@ const setSuppliers = (suppliers) => {
         `;
 
 
-        suppliers.map( supplier => {
-          contentTable+=`
+        suppliers.map(supplier => {
+            contentTable += `
           <tr>
             <td>${supplier.enterprise_name}</td>
             <td>${supplier.ubication}</td>
             <td>${supplier.cellphone}</td>
             <td>${supplier.NIT}</td>
             <td>${supplier.NRC}</td>
-            <td><a href="#"> <i class="material-icons left">edit</i></a> <a href="#"> <i class="material-icons left">delete</i></a></td>
+            <td>
+                        <a href="#modalEditSuppliers" onClick="showSupplier(${supplier.id})" class="modal-trigger">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <a href="javascript:test(${supplier.id})" id="iconDelete">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </td>
           </tr>
           `;
         })
-            
-        
-    }
-    else{
-        content=`
+
+
+    } else {
+        content = `
             <div class="center">
                 <i class="material-icons" id="iconSad">sentiment_very_dissatisfied</i>
                 <p> <span class="grey-text flow-text" id="spantitleError">No hay proveedores para mostrar.</span> </p>
@@ -52,84 +58,123 @@ const setSuppliers = (suppliers) => {
     $('#suppliersTable').html(contentTable);
 }
 const readSuppliers = () => {
-    $.ajax( 
-        {
-            url:apiTo('suppliers','getallSuppliers'),
-                 type:'GET',
-            data:null,
-            datatype:'JSON'
-        }   
-    )
-    .done(function(response)
-        {
-            if(isJSONString(response)){
+    $.ajax({
+            url: apiTo('suppliers', 'getallSuppliers'),
+            type: 'GET',
+            data: null,
+            datatype: 'JSON'
+        })
+        .done(function (response) {
+            if (isJSONString(response)) {
                 const result = JSON.parse(response);
-                if(!result.status){
-                }
+                if (!result.status) {}
                 setSuppliers(result.dataset);
-            }
-            else{
+            } else {
                 console.log(response);
             }
-        }
-    )
+        })
 }
 
-$("#createSupplier").submit(function() {
+$("#createSupplier").submit(function () {
     event.preventDefault();
     $.ajax({
-      url: apiTo("suppliers", "createSupplier"),
-      type: "POST",
-      data: $("#createSupplier").serialize(),
-      datatype: "JSON"
-    }).done(function(response) {
-      if (isJSONString(response)) {
-        const result = JSON.parse(response);
-        if (result.status) {
-          ToastSucces("Proveedor creada correctamente");
-          $("#name_supplier").val("");
-          $("#address_category").val("");
-          $("#phone_category").val("");
-          $("#nit_category").val("");
-          $("#nrc_category").val("");
-          readSuppliers();
+        url: apiTo("suppliers", "createSupplier"),
+        type: "POST",
+        data: $("#createSupplier").serialize(),
+        datatype: "JSON"
+    }).done(function (response) {
+        if (isJSONString(response)) {
+            const result = JSON.parse(response);
+            if (result.status) {
+                ToastSucces("Proveedor creada correctamente");
+                $("#name_supplier").val("");
+                $("#address_category").val("");
+                $("#phone_category").val("");
+                $("#nit_category").val("");
+                $("#nrc_category").val("");
+                readSuppliers();
+            } else {
+                ToastError(result.exception);
+            }
         } else {
-          ToastError(result.exception);
+            console.log(response);
         }
-      } else {
-        console.log(response);
-      }
     });
-  });
+});
 
 
-/**
- * Función que envia la informacion de contacto para modificar registro
- */
-$('#formModificarContacto').submit(async () => {
+const showSupplier = (id) =>{
+    alert(id);
+    $.ajax({
+        url:apiTo('suppliers','supplierbyId'),
+        type:'POST',
+        data:{
+            id
+        },
+        datatype:'JSON'
+    })
+    .done(function(response){
+        if(isJSONString(response)){
+            const result = JSON.parse(response);
+            if(result.status){
+                $('#id_supplier').val(result.dataset.id);
+                $('#edit_supplier').val(result.dataset.supplier);
+                $('#edit_ubicationSu').val(result.dataset.ubication);
+                $('#edit_phoneSu').val(result.dataset.cellphone);
+                $('#edit_nitSu').val(result.dataset.NIT);
+                $('#edit_nrcSu').val(result.dataset.NRC);
+            }
+            else{
+                $.alert({
+                    title: 'Error en la operación',
+                    boxWidth: '30%',
+                    type: 'red',
+                    useBootstrap: false,
+                    content:result.exception,
+                });
+                $('#modalEditSuppliers').modal('close');    
+            }
+        }
+        else{
+            console.log(response);
+        }
+    })
+}
+$('#form-updateSu').submit(function () {
     event.preventDefault();
-    const response = await $.ajax({
-        url: apiContactanos + 'updateContactenos',
-        type: 'post',
-        data: new FormData($('#formModificarContacto')[0]),
-        datatype: 'json',
-        cache: false,
-        contentType: false,
-        processData: false
-    }).fail(function (jqXHR) {
-        //Se muestran en consola los posibles errores de la solicitud AJAX
-        console.log('Error: ' + jqXHR.status + ' ' + jqXHR.statusText);
-    });
-    if (isJSONString(response)) {
-        const result = JSON.parse(response)
-        if (result.status) {
-            
-            $('#modalModificar').modal('toggle')
-        } else {
-        }
-        readContactenos()
-    } else {
-    }
+    $.ajax({
+            url: apiTo('suppliers', 'updateSupplier'),
+            type: 'POST',
+            data: $('#form-updateSu').serialize(),
+            datatype: 'JSON'
+        })
+        .done(function (response) {
+            if (isJSONString(response)) {
+                const result = JSON.parse(response);
+                if (result.status) {
+                    $.alert({
+                        title: `<i class="material-icons left green-text accent-4">done</i> Operación existosa`,
+                        boxWidth: '30%',
+                        type: 'green',
+                        useBootstrap: false,
+                        content: '¡Proveedor actualizado correctamente!',
+                    });
+                    readWarehouse();
+                    $('#modalEditSuppliers').modal('close');
+                } else {
+                    $.alert({
+                        title: 'Error en la operación',
+                        boxWidth: '30%',
+                        type: 'red',
+                        useBootstrap: false,
+                        content: result.exception,
+                    });
+                    $('#modalEditSuppliers').modal('close');
+                }
+            } else {
+                console.log(response);
+            }
+        })
 })
 
 /**
@@ -148,14 +193,14 @@ const borrarContacto = async (idContactenos) => {
                 value: false,
                 visible: true,
                 closeModal: true,
-              },
-              confirm: {
+            },
+            confirm: {
                 text: "Borrar",
                 value: true,
                 visible: true,
                 className: "",
                 closeModal: true
-              }
+            }
         }
     }).then(
         async (isConfirm) => {
@@ -163,7 +208,9 @@ const borrarContacto = async (idContactenos) => {
                 const response = await $.ajax({
                     url: apiContactanos + 'deleteContactenos',
                     type: 'post',
-                    data: { idContactenos },
+                    data: {
+                        idContactenos
+                    },
                     datatype: 'json'
                 })
                 //Se verifica si la respuesta de la API es una cadena JSON, sino se muestra el resultado en consola
@@ -193,4 +240,73 @@ const borrarContacto = async (idContactenos) => {
                 }
             }
         });
+}
+
+const test = (id) => {
+    $.confirm({
+        closeIcon: true,
+        dragWindowBorder: false,
+        boxWidth: '30%',
+        useBootstrap: false,
+        animation: 'opacity',
+        title: 'Eliminar proveedor',
+        type: 'red',
+        content: id,
+        buttons: {
+                confirm: {
+                    text:'Confirme',
+                    btnClass:'red',
+                    action:function () {
+                        $.ajax({
+                            url:apiTo('suppliers','deleteSupplier'),
+                            type:'POST',
+                            data:{
+                                id
+                            },
+                            datatype:'JSON'
+                        })
+                        .done(function(response){
+                            if(isJSONString(response)){
+                                const result = JSON.parse(response);
+                                if(result.status){
+                                    $.alert({
+                                        boxWidth: '30%',
+                                        useBootstrap: false,
+                                        type: 'green',
+                                        content:'¡Proveedor eliminada!'
+                                    });
+                                    readSuppliers();
+                                }
+                                else{
+                                    $.alert({
+                                        title: 'Error en la operación',
+                                        boxWidth: '30%',
+                                        type: 'red',
+                                        useBootstrap: false,
+                                        content:result.exception,
+                                    });
+                                }
+                            }
+                            else{
+                                console.log(response);
+                            }
+                        })
+                }
+            },
+            cancel:{
+                text:'Cancelar',
+                boxWidth: '30%',
+                useBootstrap: false,
+                action:function(){
+                    $.alert({
+                        title: '',
+                        boxWidth: '30%',
+                        useBootstrap: false,
+                        type:'red',
+                        content:'Operación cancelada'
+                    })
+                } 
+            }
+        }
+    });
 }
