@@ -79,6 +79,18 @@ if (isset($_GET['action'])) {
             $result['exception'] ='No hay proveedores agregadas';
         }
         break;
+        case 'deleteSupplier':
+        if ($supplier->setId($_POST['id'])){
+            if($supplier->deleteSupplier()) {
+                $result['exception'] = 1;
+            } else {
+                $result['exception'] = 'No se puede eliminar este proveedor';
+            }
+
+        } else {
+            $result['exception'] = 'Id desconocido';
+        }
+        break;
         default:
             exit('Petición rechazada');
     }
