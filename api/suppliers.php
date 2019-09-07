@@ -82,7 +82,7 @@ if (isset($_GET['action'])) {
         case 'deleteSupplier':
         if ($supplier->setId($_POST['id'])){
             if($supplier->deleteSupplier()) {
-                $result['exception'] = 1;
+                $result['status'] = 1;
             } else {
                 $result['exception'] = 'No se puede eliminar este proveedor';
             }
