@@ -33,7 +33,7 @@ class Warehouses extends Validator
     }
     public function setUbicationHouse($value)
     {
-        if ($this->validateAlphabetic($value, 1, 100)) {
+        if ($this->validateAlphanumeric($value, 1, 100)) {
             $this->ubication = $value;
             return true;
         } else {
@@ -57,8 +57,8 @@ class Warehouses extends Validator
 
     public function updateWarehouse()
     {
-        $sql = 'UPDATE warehouses SET warehouse = ? WHERE id = ?';
-        $params = array($this->warehouse);
+        $sql = 'UPDATE warehouses SET warehouse = ?, ubication = ? WHERE id = ?';
+        $params = array($this->warehouse, $this->ubication, $this->id);
         return Database::executeRow($sql, $params);   
     }
 
@@ -78,8 +78,8 @@ class Warehouses extends Validator
 
     public function getWarehouse()
     {
-        $sql = 'SELECT id, warehouse FROM warehouses WHERE id = ?';
+        $sql = 'SELECT * FROM warehouses WHERE id = ?';
         $params = array($this->id);
-        return Database::getRows($sql, $params);
+        return Database::getRow($sql, $params);
     }
 }

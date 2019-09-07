@@ -35,6 +35,55 @@ if (isset($_GET['action'])) {
                 $result['exception']='Nombre de sucursal invalido';
             }
         break;
+        case 'deleteWarehouse':
+            if($warehouse->setId($_POST['id'])){
+                if($warehouse->deleteWarehouse()){
+                    $result['status']=1;
+                }
+                else{
+                    $result['exception']='No se eliminó la sucursal';
+                }
+            }
+            else{
+                $result['exception']='No se ha encontrado información de la sucursal';
+            }
+        break;
+        case 'warehousebyId':
+            if($warehouse->setId($_POST['id'])){
+                if($result['dataset'] = $warehouse->getWarehouse()){
+                    $result['status']=1;
+                }
+                else{
+                    $result['exception']='Sucursal no encontrada';
+                }
+            }
+            else{
+                $result['exception']='No se ha encontrado información de la sucursal';
+            }
+        break;
+        case 'editWarehouse':
+            if($warehouse->setId($_POST['id_warehouse'])){
+                if($warehouse->setHouse($_POST['edit_warehouse'])){
+                    if($warehouse->setUbicationHouse($_POST['edit_ubicationWh'])){
+                        if($warehouse->updateWarehouse()){
+                            $result['status']=1;
+                        }
+                        else{
+                            $result['exception']='No se ha podido actualizar la sucursal';
+                        }
+                    }
+                    else{
+                        $result['exception']='Ubicación de la sucursal invalido';
+                    }
+                }
+                else{
+                    $result['exception']='Nombre de sucursal invalido';
+                }
+            }
+            else{
+                $result['exception']='No se ha obtenido información de la sucursal';
+            }
+        break;
         default:
             exit('Petición rechazada');
     }

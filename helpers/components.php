@@ -21,6 +21,7 @@
             print '
                 <link rel="stylesheet" href="Imports/resources/css/global/materialize.min.css">
                 <link rel="stylesheet" href="Imports/resources/css/global/material-icons.css">
+                <link rel="stylesheet" href="Imports/resources/css/global/jquery-confirm.min.css">
                 <link rel="stylesheet" href="Imports/resources/css/utilities/'.$cssFileName.'.css">
                 <link rel="stylesheet" href="Imports/resources/css/utilities/navbar.css">
             ';
@@ -29,6 +30,7 @@
             print '
                 <script src="Imports/resources/js/global/jquery-3.2.1.min.js"></script>
                 <script src="Imports/resources/js/global/materialize.min.js"></script>
+                <script src="Imports/resources/js/global/jquery-confirm.min.js""></script>
                 <script src="helpers/functions.js"></script>
                 <script src="controllers/'.$controllerFile.'.js"></script>
             ';

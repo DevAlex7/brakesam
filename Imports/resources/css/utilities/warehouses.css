@@ -19,3 +19,22 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
 #iconSad{
     font-size: 40px;
 }
+#iconDelete{
+    margin-left: 2vh;
+}
+#editWarehouse{
+    font-weight: bold;
+    font-size: 25px;
+}
+.modal{
+    border-radius: 10px;
+
+}
+#editWh{
+    background-color:#FFB321;
+    border-radius: 15px;
+}
+#cancelbtn{
+    background-color:#DB162F;   
+    border-radius: 15px;
+}

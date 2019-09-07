@@ -57,6 +57,35 @@
             </div>
         </div>
     </div>
+    <div class="modal white" id="modalEditWarehouse">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 m12">
+                    <span id="editWarehouse" class="center">Editar sucursal</span>
+                    <p  class="grey-text">Complete los datos</p>
+                    <form method="POST" id="form-updateWh">
+                        <div class="row">
+                            <input type="hidden" name="id_warehouse" id="id_warehouse">
+                            <div class="col s12 m6 offset-m3">
+                                <div class="input-field prefix">
+                                    <i class="material-icons prefix">store</i>
+                                    <input type="text" name="edit_warehouse" id="edit_warehouse" placeholder="Nombre de la sucursal">
+                                </div>
+                                <div class="input-field prefix">
+                                    <i class="material-icons prefix">room</i>
+                                    <input type="text" name="edit_ubicationWh" id="edit_ubicationWh" placeholder="Ubicación de la sucursal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button type="submit" class="btn" id="editWh">Editar</button>
+                            <a class="modal-close btn" id="cancelbtn">Cerrar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 <?php   
     Component::scripts('Warehouses');
 ?>
