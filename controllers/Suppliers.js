@@ -8,9 +8,6 @@ const setSuppliers = (suppliers) => {
      
         content=`
         <table class="responsive-table animated fadeIn">
-        if (suppliers.length > 0) {
-
-        <table class="responsive-table">
             <thead>
                 <tr>
                     <th> <i class="material-icons left">apartment</i> Empresa</th>
@@ -185,7 +182,6 @@ $('#form-updateSu').submit(function () {
  * @param {number} idContactenos - Codigo de identificacion del contacto
  */
 const borrarContacto = async (idContactenos) => {
-    validarSesion()
     swal({
         title: 'Advertencia',
         text: '¿Quiere eliminar el contacto?',
