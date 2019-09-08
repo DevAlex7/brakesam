@@ -104,8 +104,7 @@ $("#createSupplier").submit(function () {
 
 
 const showSupplier = (id) =>{
-    alert(id);
-    $.ajax({
+        $.ajax({
         url:apiTo('suppliers','supplierbyId'),
         type:'POST',
         data:{
@@ -250,7 +249,7 @@ const test = (id) => {
         animation: 'opacity',
         title: 'Eliminar proveedor',
         type: 'red',
-        content: id,
+        content: '¿Desea eliminar a este proveedor?',
         buttons: {
                 confirm: {
                     text:'Confirme',
