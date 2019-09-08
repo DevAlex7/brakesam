@@ -21,6 +21,14 @@
         header('Location: login');
       }
   });
+  Route::set('viewproducts',function(){
+      if($_SESSION['idUsername']){
+          include 'View/view_products.php';
+      }
+      else{
+        header('Location: login');
+      }
+  });
   Route::set('home', function(){
       if($_SESSION['idUsername']){
           include 'View/home.php';

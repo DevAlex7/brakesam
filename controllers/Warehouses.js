@@ -1,6 +1,7 @@
 $(document).ready(function () {
     readWarehouse();
     $('.modal').modal();
+    
 });
 const setWarehouses = (warehouses) => {
     let content = '';

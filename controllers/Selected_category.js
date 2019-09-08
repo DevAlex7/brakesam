@@ -22,11 +22,11 @@ const setlistSubcategories = (subcategories) => {
         subcategories.map( subcategorie => {
             content+= `
                 <tr>
-                    <td>
-                    ${subcategorie.subcategory}  
+                    <td onClick="item(${subcategorie.id_subcategory})">
+                        ${subcategorie.subcategory}  
                     </td>
                     <td>
-                    ${subcategorie.number_products}
+                        ${subcategorie.number_products}
                     </td>
                 </tr>
             `;
@@ -47,10 +47,11 @@ const setlistSubcategories = (subcategories) => {
     
 } 
 const getCategory = () => {
+
     name = localStorage.getItem('item_category');
-    
     id = localStorage.getItem('id_category');
     $('#categoryselected').text(name);  
+    
     $.ajax(
         {
             url:apiTo('categories','getSubcategoriesbyCategories'),
@@ -73,6 +74,7 @@ const getCategory = () => {
         }
     })
 } 
-$('body').on('click','td', function() {
-    alert('clicked');
-});
+const item = (id) =>{
+    localStorage.setItem('id_subcategory',id);
+    location.href='viewproducts';
+}

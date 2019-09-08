@@ -26,7 +26,6 @@
                         <div id="information">
                             <span class="grey-text" id="titleSubcategory">Subcategorías</span>    
                             <div id="readSubcategories">
-
                             </div>
                         </div>
                     </div>

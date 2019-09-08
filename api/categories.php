@@ -72,6 +72,14 @@
                     $result['exception']='No se ha encontrado información';
                 }
             break;
+            case 'getSubcategories':
+                if($result['dataset'] = $subCategory->all()){
+                    $result['status'] =1;
+                }
+                else{
+                    $result['exception'] = 'No hay subcategorias';
+                }   
+            break;
             case 'getSubcategoriesbyCategories':
                 if($subCategory->setIdCat($_POST['id'])){
                     if($result['dataset'] = $subCategory->getSubcategoriesbyCategories()){

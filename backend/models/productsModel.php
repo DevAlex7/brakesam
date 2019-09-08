@@ -6,7 +6,9 @@ class Products extends Validator {
     private $provider_id;
     private $count_stock;
     private $ubication_warehouse;
-    private $category_id;
+    private $subcategory_id;
+    private $image;
+    private $root='../Imports/resources/pics/products/';
 
     public function setId($value){
         if($this->validateId($value)){
@@ -48,8 +50,16 @@ class Products extends Validator {
             return false;
         }
     } 
+    public function setPrice($value){
+        if($this->validateMoney(($value))){
+            $this->count_stock = $value;
+            return true;
+        }else{
+            return false;
+        }
+    } 
     public function setUbicationWarehouse($value){
-        if($this->id($value)){
+        if($this->validateId($value)){
             $this->ubication_warehouse = $value;
             return true;
         }
@@ -57,14 +67,24 @@ class Products extends Validator {
             return false;
         }
     }
-    public function setCategoryId($value){
+    public function setSubCategoryId($value){
         if($this->validateId($value)){
-            $this->category_id = $value;
+            $this->subcategory_id = $value;
             return true;
         }else{
             return false;
         }
     } 
+
+    public function setImage($file, $name){
+        if($this->validateImageFile($file, $this->root, $name, 500, 500)){
+            $this->image=$this->getImageName();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public function Id(){
         return $this->id;
@@ -85,11 +105,21 @@ class Products extends Validator {
         return $this->ubication_warehouse;
     } 
     public function getCategoryId(){
-        return $this->category_id   ;
+        return $this->subcategory_id;
     } 
+    public function getImage(){
+        return $this->image;
+    }
+    public function getRoot(){
+        return $this->root;
+    }
 
     public function save(){
-        $sql='INSERT INTO ';
+        $sql='INSERT INTO products VALUES (NULL, ?,?,?,?,?,?,?)';
+        $params = array(
+        $this->product_name, $this->product_price, $this->provider_id, 
+        $this->count_stock, $this->ubication_warehouse, $this->subcategory_id, $this->image);
+        return Database::executeRow($sql,$params);
     }
 
     public function editbyId(){
@@ -103,13 +133,15 @@ class Products extends Validator {
     public function all(){
 
     }   
-
+    public function getProductsbySubcategory(){
+        $sql='SELECT products.* FROM (products INNER JOIN subcategories_products ON products.subcategory_id = subcategories_products.id) WHERE subcategories_products.id = ?';
+        $params = array($this->subcategory_id);
+        return Database::getRows($sql,$params);
+    }
     public function allbyId(){
-
+        
     }
 }
 
-
-?>
 
 ?>
