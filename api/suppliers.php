@@ -54,7 +54,7 @@ if (isset($_GET['action'])) {
                                         $result['status'] = 1;
                                     } else {
                                         $result['exception'] = 'Fallo al actualizar información';
-                                    }
+                                 }
                             
                             } else {
                                 $result['exception'] = 'No se puede actualizar el NRC';

@@ -118,7 +118,7 @@ const showSupplier = (id) =>{
             const result = JSON.parse(response);
             if(result.status){
                 $('#id_supplier').val(result.dataset.id);
-                $('#edit_supplier').val(result.dataset.supplier);
+                $('#edit_supplier').val(result.dataset.enterprise_name);
                 $('#edit_ubicationSu').val(result.dataset.ubication);
                 $('#edit_phoneSu').val(result.dataset.cellphone);
                 $('#edit_nitSu').val(result.dataset.NIT);
@@ -159,7 +159,7 @@ $('#form-updateSu').submit(function () {
                         useBootstrap: false,
                         content: '¡Proveedor actualizado correctamente!',
                     });
-                    readWarehouse();
+                    readSuppliers();
                     $('#modalEditSuppliers').modal('close');
                 } else {
                     $.alert({

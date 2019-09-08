@@ -58,8 +58,8 @@ class Suppliers extends Validator
 
     public function setPhone($value)
     {
-        if ($this->validateCellphone($value)){
-            $this->cellphone = $this->setCellphone($value); 
+        if ($this->validateAlphanumeric($value, 1, 8)){
+            $this->cellphone = $value; 
             return true;
         } else {
             return false;
@@ -127,8 +127,8 @@ class Suppliers extends Validator
 
     public function updateSupplier()
     {
-        $sql = 'UPDATE suppliers SET enterprice_name = ?, ubication = ?, cellphone = ?, NIT = ?, NRC = ?, date_created = ? WHERE id = ?';
-        $params = array($this->enterpriseName, $this->ubication, $this->cellphone, $this->nit, $this->nrc, $this->date);
+        $sql = 'UPDATE suppliers SET enterprise_name = ?, ubication = ?, cellphone = ?, NIT = ?, NRC = ?  WHERE id = ?';
+        $params = array($this->enterpriseName, $this->ubication, $this->cellphone, $this->nit, $this->nrc, $this->id);
         return Database::executeRow($sql, $params);   
     }
 
