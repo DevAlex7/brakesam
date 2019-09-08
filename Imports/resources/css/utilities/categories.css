@@ -15,6 +15,18 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
 #navbar-template{
     background-color: #DB162F;
 }
+.red-hover-color:hover{
+    background-color: #DB162F;
+}
+#editCategorybtn{
+    background-color:#FFB321;
+    border-radius: 15px;
+}
+
+.radius{
+    background-color: #DB162F;
+    border-radius: 15px;
+}
 #title-navbar{
     font-weight: 100;
     font-size: 30px;
@@ -24,6 +36,42 @@ input[type=text]:focus, .materialize-textarea:focus:not([readonly]) {
     background-color: #DB162F;
     margin-top:0.5rem;
     border-radius: 15px;
+}
+.modal{
+    width: 30%;
+    border-radius: 10px;
+    margin-top:100px;
+}
+#modalEditSubcategory{
+    margin-top:10px;
+}
+#inputFields{
+    margin-top:1rem;
+}
+.animated {
+    -webkit-animation-duration: 10s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+ }
+ 
+ @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ #editCategory{
+    font-weight: bold;
+    font-size: 25px;
+}
+ @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+ 
+ .fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 #rowSearch{
     margin-top:2rem;

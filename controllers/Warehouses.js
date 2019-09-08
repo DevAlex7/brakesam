@@ -7,7 +7,7 @@ const setWarehouses = (warehouses) => {
     let contentTable='';
     if(warehouses.length > 0){
         content=`
-        <table class="responsive-table">
+        <table class="responsive-table animated fadeIn">
             <thead>
                 <tr>
                     <th> <i class="material-icons left">store</i> Empresa</th>
@@ -111,49 +111,48 @@ const test = (id) => {
         dragWindowBorder: false,
         boxWidth: '30%',
         useBootstrap: false,
-        animation: 'opacity',
         title: 'Eliminar sucursal',
         type: 'red',
-        content: id,
+        content: '¿Desea eliminar esta sucursal?',
         buttons: {
                 confirm: {
-                    text:'Confirme',
+                    text:'Eliminar',
                     btnClass:'red',
                     action:function () {
-                        $.ajax({
-                            url:apiTo('warehouses','deleteWarehouse'),
-                            type:'POST',
-                            data:{
-                                id
-                            },
-                            datatype:'JSON'
-                        })
-                        .done(function(response){
-                            if(isJSONString(response)){
-                                const result = JSON.parse(response);
-                                if(result.status){
-                                    $.alert({
-                                        boxWidth: '30%',
-                                        useBootstrap: false,
-                                        type: 'green',
-                                        content:'¡Sucursal eliminada!'
-                                    });
-                                    readWarehouse();
-                                }
-                                else{
-                                    $.alert({
-                                        title: 'Error en la operación',
-                                        boxWidth: '30%',
-                                        type: 'red',
-                                        useBootstrap: false,
-                                        content:result.exception,
-                                    });
-                                }
+                    $.ajax({
+                        url:apiTo('warehouses','deleteWarehouse'),
+                        type:'POST',
+                        data:{
+                            id
+                        },
+                        datatype:'JSON'
+                    })
+                    .done(function(response){
+                        if(isJSONString(response)){
+                            const result = JSON.parse(response);
+                            if(result.status){
+                                $.alert({
+                                    boxWidth: '30%',
+                                    useBootstrap: false,
+                                    type: 'green',
+                                    content:'¡Sucursal eliminada!'
+                                });
+                                readWarehouse();
                             }
                             else{
-                                console.log(response);
+                                $.alert({
+                                    title: 'Error en la operación',
+                                    boxWidth: '30%',
+                                    type: 'red',
+                                    useBootstrap: false,
+                                    content:result.exception,
+                                });
                             }
-                        })
+                        }
+                        else{
+                            console.log(response);
+                        }
+                    })
                 }
             },
             cancel:{

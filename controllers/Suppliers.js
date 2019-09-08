@@ -7,7 +7,7 @@ const setSuppliers = (suppliers) => {
     if(suppliers.length > 0){
      
         content=`
-        <table class="responsive-table">
+        <table class="responsive-table animated fadeIn">
             <thead>
                 <tr>
                     <th> <i class="material-icons left">apartment</i> Empresa</th>

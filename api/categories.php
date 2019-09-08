@@ -85,6 +85,99 @@
                     $result['exception']='No se ha definido la categoría';
                 }
             break;
+            case 'getCategorybyId':
+                if($category->setId($_POST['id'])){
+                    if($result['dataset'] = $category->getCategorybyId()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='No se pudo obtener la categoría';
+                    }
+                }
+                else{
+                    $result['exception']='Ha ocurrido un problema con la información';
+                }
+            break;
+            case 'editCategory':
+            if($category->setId($_POST['id_category'])){
+                if($category->setCategory($_POST['edit_category'])){
+                    if($category->updateCategory()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='No se pudo actualizar la categoria';
+                    }
+                }
+                else{
+                    $result['exception']='Nombre de la categoria invalido';
+                }
+            }
+            else{
+                $result['exception']='Ha ocurrido un problema con la información';
+            }
+            break;
+            case 'deleteCategory':
+                if($category->setId($_POST['id'])){
+                    if($category->deleteCategory()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='No se pudo eliminar la categoría';
+                    }   
+                }
+                else{
+                    $result['exception']='Ha ocurrido un problema con la información';
+                }
+            break;
+            case 'getSubcategorybyId':
+                if($subCategory->setId($_POST['id'])){
+                    if($result['dataset'] = $subCategory->getSubCategorybyId()){
+                        $result['status'] = 1;
+                    }
+                    else{
+                        $result['exception']='No se encontro nada en esta subcategoría';
+                    }
+                }
+                else{
+                    $result['exception']='Ha ocurrido un problema con la información';
+                }
+            break;
+            case 'updateSubCategory':
+                if($subCategory->setId($_POST['id_editsubcategory'])){
+                    if($subCategory->setSubCategory($_POST['editSubcategory'])){
+                        if($subCategory->setIdCat($_POST['edit_categoryCombo'])){
+                            if($subCategory->updatesubCategory()){
+                                $result['status'] = 1;
+                            }
+                            else{
+                                $result['exception'] = 'No se actualizo la subcategoria';
+                            }
+                        }
+                        else{
+                            $result['exception'] = 'No has seleccionado ninguna categoría';
+                        }
+                    }
+                    else{
+                        $result['exception'] = 'Nombre de subcategoria invalido';
+                    }
+                }
+                else{
+                    $result['exception']='No se pudo obtener la subcategoría';
+                }
+            break;
+            case 'deleteSubcategorie':
+                if($subCategory->setId($_POST['id'])){
+                    if($subCategory->deletesubCategory()){
+                        $result['status']=1;
+                    }
+                    else{
+                        $result['exception']='No se pudo eliminar la subcategoria';
+                    }
+                }
+                else{
+                    $result['exception']='No se pudo obtener la subcategoría';
+                }
+            break;
             default:
             exit('Petición rechazada');
         }

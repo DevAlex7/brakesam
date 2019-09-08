@@ -2,7 +2,12 @@
   session_start();    
 
   Route::set('login', function(){
-      include 'View/login.php';
+      if(isset($_SESSION['idUsername'])){
+        header('Location: home');
+      }
+      else{
+        include 'View/login.php';
+      }
   });
 
   Route::set('signup', function(){

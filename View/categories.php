@@ -98,6 +98,50 @@
         </div>
     </div>
 </div>
+<div class="modal white" id="modalEditCat">
+    <div class="modal-content">
+        <span id="editCategory">Editar Categoría</span>
+        <div class="row">
+            <div class="col s12 m12">
+                <form method="POST" id="form-editCategory">
+                    <input type="hidden" id="id_category" name="id_category">
+                    <div class="input-field prefix">
+                        <i class="material-icons black-text prefix">edit</i>
+                        <input type="text" name="edit_category" id="edit_category">
+                    </div>
+                    <div class="center">
+                        <button class="btn" id="editCategorybtn">Editar</button>
+                        <a class="btn modal-close radius red-hover-color">cerrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal white" id="modalEditSubcategory">
+    <div class="modal-content">
+        <span id="editCategory">Editar subcategoría</span>
+        <div class="row" id="inputFields">
+            <div class="col s12 m12">
+                <form method="POST" id="editSubcategory-form">
+                    <input type="hidden" name="id_editsubcategory" id="id_editsubcategory">
+                    <div class="input-field prefix">
+                        <input type="text" name="editSubcategory" id="editSubcategory">
+                        <span class="grey-text">Nombre de la subcategoria</span>
+                    </div>
+                    <div class="input-field prefix">
+                        <select name="edit_categoryCombo" id="edit_categoryCombo"></select>
+                        <span class="grey-text">Seleccione una categoria</span>
+                    </div>
+                    <div class="center">
+                        <button type="submit" class="btn" id="editCategorybtn">Editar</button>
+                        <a class="btn modal-close radius red-hover-color">Cerrar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <?php 
 Component::scripts('Categories');
 ?>

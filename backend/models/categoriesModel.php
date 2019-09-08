@@ -48,7 +48,7 @@ class Categories extends Validator
     public function updateCategory()
     {
         $sql = 'UPDATE categories_products SET category = ? WHERE id = ?';
-        $params = array($this->category);
+        $params = array($this->category, $this->id);
         return Database::executeRow($sql, $params);   
     }
      
@@ -69,9 +69,9 @@ class Categories extends Validator
 
     public function getCategorybyId()
     {
-        $sql = 'SELECT id, category FROM categories_products WHERE id = ?';
+        $sql = 'SELECT * FROM categories_products WHERE id = ?';
         $params = array($this->id);
-        return Database::getRows($sql, $params);
+        return Database::getRow($sql, $params);
     }
 
     public function getCategoriesWithSubCategories(){

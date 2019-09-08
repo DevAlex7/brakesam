@@ -67,7 +67,7 @@ class Subcategories extends Validator
     public function updatesubCategory()
     {
         $sql = 'UPDATE subcategories_products SET subcategory = ?, category_id= ?  WHERE id = ?';
-        $params = array($this->category, $this->idCat);
+        $params = array($this->subcategory, $this->idCat, $this->id);
         return Database::executeRow($sql, $params);   
     }
 
@@ -80,27 +80,27 @@ class Subcategories extends Validator
 
     public function readsubCategory()
     {
-        $sql = 'SELECT subcategories_products.subcategory, categories_products.category FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) ORDER BY subcategories_products.id';
+        $sql = 'SELECT subcategories_products.id AS id_subcategory, subcategories_products.subcategory, categories_products.category FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) ORDER BY subcategories_products.id';
         $params = array(null);
         return Database::getRows($sql, $params);
     }
 
-    public function getsubCategoryNone()
+    public function getSubCategorybyId()
     {
-        $sql = 'SELECT id, subcategory, category_id, category FROM categories_products INNER JOIN categories_products cat ON cat.category_id WHERE id = ?';
+        $sql = 'SELECT subcategories_products.id AS id_subcategory, subcategories_products.subcategory, categories_products.id AS id_category FROM (subcategories_products INNER JOIN categories_products ON categories_products.id = subcategories_products.category_id) WHERE subcategories_products.id =?';
         $params = array($this->id);
-        return Database::getRows($sql, $params);
+        return Database::getRow($sql, $params);
     }
 
     public function getSubcategoriesbyCategories(){
         $sql = '
-        SELECT subcategories_products.subcategory, COUNT(products.id) AS number_products
-        FROM subcategories_products 
-        LEFT OUTER JOIN products ON 
-        subcategories_products.id = products.subcategory_id 
-        LEFT JOIN categories_products ON 
-        categories_products.id = subcategories_products.category_id 
-        WHERE categories_products.id = ? GROUP BY subcategories_products.subcategory
+            SELECT subcategories_products.subcategory, COUNT(products.id) AS number_products
+            FROM subcategories_products 
+            LEFT OUTER JOIN products ON 
+            subcategories_products.id = products.subcategory_id 
+            LEFT JOIN categories_products ON 
+            categories_products.id = subcategories_products.category_id 
+            WHERE categories_products.id = ? GROUP BY subcategories_products.subcategory
         ';
         $params = array($this->idCat);
         return Database::getRows($sql,$params);

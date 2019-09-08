@@ -68,11 +68,11 @@
                             <input type="hidden" name="id_warehouse" id="id_warehouse">
                             <div class="col s12 m6 offset-m3">
                                 <div class="input-field prefix">
-                                    <i class="material-icons prefix">store</i>
+                                    <i class="material-icons prefix black-text">store</i>
                                     <input type="text" name="edit_warehouse" id="edit_warehouse" placeholder="Nombre de la sucursal">
                                 </div>
                                 <div class="input-field prefix">
-                                    <i class="material-icons prefix">room</i>
+                                    <i class="material-icons prefix black-text">room</i>
                                     <input type="text" name="edit_ubicationWh" id="edit_ubicationWh" placeholder="Ubicación de la sucursal">
                                 </div>
                             </div>
