@@ -8,17 +8,13 @@ const setProducts = (product) => {
     if(product.length > 0){
         product.map( product => {
             content=`
-            <div class="col s12 m3">
-                <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
+            <div class="col s12 m2 offset-m1">
+                <div class="card" onClick="viewProduct(${product.id})">
+                    <div class="card-image">
                         <img class="activator" src="Imports/resources/pics/products/${product.image}">
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">${product.product_name}<i class="material-icons right tooltipped data-position="bottom" data-tooltip="ver más detalles">more_vert</i></span>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        <span class="card-title activator grey-text text-darken-4">${product.product_name}</span>
                     </div>
                 </div>
             </div>
@@ -27,10 +23,11 @@ const setProducts = (product) => {
     }
     else{
         content = `
-            <div class="center">
-                <i class="material-icons">face<i>
-                <p id="titleError">No hay nada</p>
+            <div class="center" style="margin-top:3rem">
+                <i class="material-icons">face</i>
+                <p id="titleError">No hay productos</p>
             </div>
+            
         `;
     }   
     $('#readProducts').html(content);
@@ -59,4 +56,9 @@ const readProducts = () => {
             console.log(response);
         }
     })
+}
+const viewProduct = (id) => {
+    localStorage.setItem('id_viewp', id);
+    location.href='viewproduct';
+    
 }

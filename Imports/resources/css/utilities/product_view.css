@@ -1,0 +1,20 @@
+#divtitleProduct{
+    margin-top:1rem;
+}
+#ProductTitle{
+    font-weight: bold;
+    font-size: 30px;
+}
+#imgProduct{
+    margin-left: 40px;
+    width: 70%;
+}
+#providerTitle, #warehouseTitle{
+    font-size: 1.3rem;
+}
+#priceTitle, #countTitle{
+    position: relative;
+    font-size: 20px;
+    font-weight:bold;
+    top:-4px;
+}

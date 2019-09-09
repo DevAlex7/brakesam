@@ -138,8 +138,10 @@ class Products extends Validator {
         $params = array($this->subcategory_id);
         return Database::getRows($sql,$params);
     }
-    public function allbyId(){
-        
+    public function productbyId(){
+        $sql = 'SELECT products.*, suppliers.enterprise_name, warehouses.warehouse FROM ((products INNER JOIN suppliers ON suppliers.id = products.provider_id) INNER JOIN warehouses ON warehouses.id = products.ubication_warehouse) WHERE products.id = ?';
+        $params = array($this->id);
+        return Database::getRow($sql,$params);
     }
 }
 

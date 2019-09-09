@@ -82,25 +82,11 @@ class Binnacle extends Validator
         return $this->idUser;
     }
 
-    public function setDate($value)
-    {
-        if ($this->validateAlphabetic($value, 1, 50)) {
-            $this->saleDate = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function getDate()
-    {
-        return $this->saleDate;
-    }
-
+    
     public function createBin()
     {
         $sql = 'INSERT INTO binnacle(stock_action_id, product_id,  count, user_id, date_action) VALUES (?, ?, ?, ?, ?)';
-        $params = array($this->id);
+        $params = array($this->stockId, $this->productId, $this->count, $this->idUser, date('Y-m-d'));
         return Database::executeRow($sql, $params);   
     }
 

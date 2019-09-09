@@ -1,6 +1,7 @@
 <?php 
     require_once('../helpers/validator.php');
     require_once('../backend/models/productsModel.php');
+    require_once('../backend/models/binnacleModel.php');
     require_once('../backend/database/database.php');
 
     session_start();
@@ -8,6 +9,7 @@
     
     if( isset($_GET['action']) ){
         $product = new Products();
+        $binnacle = Binnacle();
         switch($_GET['action']){
             case 'insertProduct':
             if($product->setNameProduct($_POST['name_product'])){
@@ -74,6 +76,19 @@
                 }
                 else{
                     $result['exception']='Error al obtener información';
+                }
+            break;
+            case 'getProductbyId':
+                if($product->setId($_POST['id'])){
+                    if($result['dataset'] = $product->productbyId()){
+                        $result['status'] = 1;
+                    }
+                    else{   
+                        $result['exception']='No hay información';
+                    }
+                }
+                else{
+                    $result['exception']='No se ha identificado el producto';
                 }
             break;
             default:
