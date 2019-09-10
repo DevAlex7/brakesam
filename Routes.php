@@ -16,7 +16,7 @@
 
   Route::set('products', function(){
       if($_SESSION['idUsername']){
-        print 'categorias';
+        include 'View/products.php';
       }
       else{
         header('Location: login');
@@ -64,6 +64,6 @@
 
   Route::set('viewproduct',function(){
     include('View/view_product.php');
-  })
-  
+  });
+
 ?>

@@ -10,7 +10,7 @@
                         <li><a href="categories">Categorias</a></li>
                         <li><a href="suppliers">Proveedores</a></li>
                         <li><a href="warehouses">Sucursales</a></li>
-                        <li><a href="collapsible.html">Productos</a></li>
+                        <li><a href="products">Productos</a></li>
                         <li><a href="collapsible.html">Cerrar Sesión</a></li>
                     </ul>
                 </div>

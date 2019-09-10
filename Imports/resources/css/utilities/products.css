@@ -1,0 +1,17 @@
+.row{
+    margin-top:1rem;
+}
+#table{
+    margin-top:2rem;
+}
+#titleProducts{
+    font-size: 30px;
+    font-weight: bold;
+}
+img{
+    width: 75px;
+    height: 75px;
+}
+.modal{
+    width: 30%;
+}

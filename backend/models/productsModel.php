@@ -123,15 +123,26 @@ class Products extends Validator {
     }
 
     public function editbyId(){
-
+        $sql='UPDATE products SET product_name=?, product_price=?, provider_id=?, count_stock=?, ubication_warehouse=?, subcategory_id=?, image=? WHERE id=?';    
+        
+        $params = array(
+            $this->product_name, $this->product_price, $this->provider_id, 
+            $this->count_stock, $this->ubication_warehouse, $this->subcategory_id, $this->image, $this->id
+        );
+        
+        return Database::executeRow($sql,$params);
     }
 
     public function deletebyId(){
-
+        $sql='DELETE FROM products WHERE id=?';
+        $params = array($this->id);
+        return Database::executeRow($sql,$params);
     }
 
     public function all(){
-
+        $sql='SELECT products.*, suppliers.enterprise_name, warehouses.warehouse , subcategories_products.subcategory FROM ((products INNER JOIN suppliers ON suppliers.id = products.provider_id) INNER JOIN warehouses ON warehouses.id = products.ubication_warehouse INNER JOIN subcategories_products ON subcategories_products.id = products.subcategory_id)';
+        $params = array(null);
+        return Database::getRows($sql,$params);
     }   
     public function getProductsbySubcategory(){
         $sql='SELECT products.* FROM (products INNER JOIN subcategories_products ON products.subcategory_id = subcategories_products.id) WHERE subcategories_products.id = ?';
@@ -139,7 +150,7 @@ class Products extends Validator {
         return Database::getRows($sql,$params);
     }
     public function productbyId(){
-        $sql = 'SELECT products.*, suppliers.enterprise_name, warehouses.warehouse FROM ((products INNER JOIN suppliers ON suppliers.id = products.provider_id) INNER JOIN warehouses ON warehouses.id = products.ubication_warehouse) WHERE products.id = ?';
+        $sql = 'SELECT products.*, suppliers.id AS supplier_id, suppliers.enterprise_name, warehouses.id AS warehouse_id, warehouses.warehouse FROM ((products INNER JOIN suppliers ON suppliers.id = products.provider_id) INNER JOIN warehouses ON warehouses.id = products.ubication_warehouse) WHERE products.id = ?';
         $params = array($this->id);
         return Database::getRow($sql,$params);
     }
